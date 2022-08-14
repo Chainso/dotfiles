@@ -336,7 +336,7 @@ globalkeys = gears.table.join(
     -- Prompt
     awful.key({ modkey }, "r",
         function ()
-            awful.util.spawn("rofi -show drun")
+            awful.spawn("rofi -show drun")
         end,
         {description = "run prompt", group = "launcher"}
     ),
@@ -344,7 +344,7 @@ globalkeys = gears.table.join(
     -- Browser
     awful.key({ modkey }, "b",
         function ()
-            awful.util.spawn("firefox")
+            awful.spawn("firefox")
         end,
         {description = "Spawn a browser", group = "applications"}
     ),
