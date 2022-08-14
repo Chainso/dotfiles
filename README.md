@@ -1,2 +1,2 @@
-# dotfiles
+# Chainso dotfiles
 Dotfile configurations
