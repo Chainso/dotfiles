@@ -36,6 +36,7 @@ theme.border_width  = dpi(2)
 theme.border_normal = "#cbc3e3"
 theme.border_focus  = "#cbc3e3"
 theme.border_marked = "#91231c"
+theme.border_radius = dpi(6)
 
 
 -- There are other variable sets
@@ -134,6 +135,20 @@ theme.awesome_icon = theme_assets.awesome_icon(
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
-return theme
+-- Wibar
+theme.wibar_position = "top"
+theme.wibar_height = 6
+theme.wibar_fg = x.color0
+theme.wibar_bg = x.color7
+--theme.wibar_opacity = 0.7
+theme.wibar_border_color = x.color0
+theme.wibar_border_width = 0
+theme.wibar_border_radius = theme.border_radius
+--theme.wibar_width = screen_width - theme.screen_margin * 4 -theme.wibar_border_width * 2
+theme.wibar_width = 885
+--theme.wibar_x = screen_width / 2 - theme.wibar_width - theme.screen_margin * 2
+--theme.wibar_x = theme.screen_margin * 2
+--theme.wibar_x = screen_width - theme.wibar_width - theme.wibar_border_width * 2 - theme.screen_margin * 2
+--theme.wibar_y = theme.screen_margin * 2
 
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
+return theme
