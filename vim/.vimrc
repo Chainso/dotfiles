@@ -90,6 +90,8 @@ call plug#begin('~/.vim/plugged')
     let g:DevIconsEnableFoldersOpenClose = 1
 
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 
