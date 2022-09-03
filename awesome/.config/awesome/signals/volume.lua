@@ -1,7 +1,7 @@
 -- [[
 -- Provides:
 --
--- widgets::volume
+-- signal::volume
 --  volume percentage (int)
 --  if volume is muted (boolean)
 --
@@ -26,7 +26,7 @@ local function emit_volume_info()
             volume = new_volume_int
             muted = new_muted_bool
 
-            awesome.emit_signal("widget::volume", volume, muted)
+            awesome.emit_signal("signal::volume", volume, muted)
         end
     end)
 end
