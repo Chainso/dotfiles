@@ -4,6 +4,7 @@
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
+local x = xresources.get_current_theme()
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
@@ -137,7 +138,7 @@ theme.icon_theme = nil
 
 -- Wibar
 theme.wibar_position = "top"
-theme.wibar_height = 6
+theme.wibar_height = dpi(24)
 theme.wibar_fg = x.color0
 theme.wibar_bg = x.color7
 --theme.wibar_opacity = 0.7
