@@ -81,6 +81,7 @@ HIST_STAMPS="%F %l:%M:%S %p"
 plugins=(
 	git
 	zsh-autosuggestions
+	command-not-found
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -148,8 +149,5 @@ export VISUAL="${EDITOR}"
 
 # Android development
 export ANDROID_HOME="/home/chanzo/Android/Sdk"
-
-# Package installation suggestions
-source /etc/zsh_command_not_found
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
