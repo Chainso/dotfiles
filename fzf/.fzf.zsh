@@ -3,9 +3,9 @@
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "$/usr/share/fzf/shell/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "$/usr/share/fzf/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-source "/usr/share/fzf/shell/key-bindings.zsh"
+source "/usr/share/fzf/key-bindings.zsh"
 
