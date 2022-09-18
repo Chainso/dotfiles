@@ -121,7 +121,7 @@ export PATH=$PATH:/usr/local/cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
 
 # Add Mujoco paths
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/chanzo/.mujoco/mujoco210/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin
 
 ## NVIDIA for Mujoco
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
@@ -148,6 +148,7 @@ export DOLPHIN_EMU_USERPATH=~/.local/share/dolphin-emu
 export VISUAL="${EDITOR}"
 
 # Android development
-export ANDROID_HOME="/home/chanzo/Android/Sdk"
+export ANDROID_HOME="$HOME/Android/Sdk"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+neofetch
