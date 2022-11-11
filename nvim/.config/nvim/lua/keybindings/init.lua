@@ -20,6 +20,12 @@ r.vnoremap("<leader>d", "\"_d")
 
 -- Searching
 r.nnoremap("<CR>", "<CMD>noh<CR><CR>")
+r.nnoremap("n", "nzz")
+r.nnoremap("N", "Nzz")
+r.nnoremap("<C-o>", "<C-o>zz")
+r.nnoremap("<C-i>", "<C-i>zz")
+r.nnoremap("*", "*zz")
+r.nnoremap("#", "#zz")
 
 -- Navigation
 r.nnoremap("<C-d>", "<C-d>zz")
