@@ -152,3 +152,4 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 neofetch
+source /usr/share/nvm/init-nvm.sh
