@@ -1,6 +1,6 @@
 local jdtls_dir = os.getenv("HOME") .. "/.local/share/nvim/mason/packages/jdtls"
 local root_dir = require("jdtls.setup").find_root({".git", "mvnw", "gradlew"})
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+local data_dir_name = ".jdtls"
 
 require("jdtls").start_or_attach({
   cmd = {
@@ -16,7 +16,7 @@ require("jdtls").start_or_attach({
     "--add-opens", "java.base/java.lang=ALL-UNNAMED",
     "-jar", jdtls_dir .. "/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
     "-configuration", jdtls_dir .. "/config_linux",
-    "-data", root_dir .. "/" .. project_name
+    "-data", root_dir .. "/" .. data_dir_name
   },
   root_dir = root_dir
 })
