@@ -1,3 +1,5 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 local jdtls_dir = os.getenv("HOME") .. "/.local/share/nvim/mason/packages/jdtls"
 local root_dir = require("jdtls.setup").find_root({".git", "mvnw", "gradlew"})
 local data_dir_name = ".jdtls"
@@ -18,6 +20,7 @@ require("jdtls").start_or_attach({
     "-configuration", jdtls_dir .. "/config_linux",
     "-data", root_dir .. "/" .. data_dir_name
   },
-  root_dir = root_dir
+  root_dir = root_dir,
+  capabilities = capabilities
 })
 
