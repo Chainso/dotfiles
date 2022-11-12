@@ -32,6 +32,8 @@ r.nnoremap("<C-d>", "<C-d>zz")
 r.nnoremap("<C-u>", "<C-u>zz")
 r.nnoremap("<C-b>", "<C-b>zz")
 r.nnoremap("<C-f>", "<C-f>zz")
+r.nnoremap("{", "{zz")
+r.nnoremap("}", "}zz")
 
 -- LSP
 r.nnoremap("gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
