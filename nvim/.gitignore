@@ -1,2 +1,7 @@
 # Compiled plugins
 .config/nvim/plugin/packer_compiled.lua
+
+# LSP
+.luarc.json
+.jdtls
+
