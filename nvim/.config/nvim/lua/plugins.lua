@@ -4,11 +4,10 @@ vim.cmd [[packadd packer.nvim]]
 local packer_startup = require("packer").startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
- 
   use "nvim-lua/plenary.nvim"
 
   -- Color schemes
-  use "dracula/vim"
+  use "Mofiqul/dracula.nvim"
   use "folke/tokyonight.nvim"
 
   use {
