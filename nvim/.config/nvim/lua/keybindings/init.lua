@@ -33,3 +33,16 @@ r.nnoremap("<C-u>", "<C-u>zz")
 r.nnoremap("<C-b>", "<C-b>zz")
 r.nnoremap("<C-f>", "<C-f>zz")
 
+-- LSP
+r.nnoremap("gd", ":lua vim.lsp.buf.definition()<cr>")
+r.nnoremap("gD", ":lua vim.lsp.buf.declaration()<cr>")
+r.nnoremap("gi", ":lua vim.lsp.buf.implementation()<cr>")
+r.nnoremap("gw", ":lua vim.lsp.buf.document_symbol()<cr>")
+r.nnoremap("gw", ":lua vim.lsp.buf.workspace_symbol()<cr>")
+r.nnoremap("gr", ":lua vim.lsp.buf.references()<cr>")
+r.nnoremap("gt", ":lua vim.lsp.buf.type_definition()<cr>")
+r.nnoremap("K", ":lua vim.lsp.buf.hover()<cr>")
+r.nnoremap("<C-k>", ":lua vim.lsp.buf.signature_help()<cr>")
+r.nnoremap("<leader>af", ":lua vim.lsp.buf.code_action()<cr>")
+r.nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<cr>")
+

@@ -5,9 +5,9 @@ local packer_startup = require("packer").startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
-  use "nvim-lua/plenary.nvim" 
+  use "nvim-lua/plenary.nvim"
 
-  use { "dracula/vim" } 
+  use { "dracula/vim" }
 
   use {
     "nvim-telescope/telescope.nvim",
@@ -56,6 +56,13 @@ local packer_startup = require("packer").startup(function(use)
   })
 
   use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup()
+    end
+  }
+
+  use {
     "nvim-tree/nvim-tree.lua",
     requires = {
       "nvim-tree/nvim-web-devicons", -- optional, for file icons
@@ -72,7 +79,24 @@ local packer_startup = require("packer").startup(function(use)
   })
 
   -- Post-install/update hook with neovim command
-  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        auto_install = true,
+        highlight = {
+          enable = true
+        },
+        indent = {
+          enable = true
+        }
+      })
+
+      -- vim.opt.foldmethod = "expr"
+      -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    end
+  }
 
   use {
     "nvim-lualine/lualine.nvim",
@@ -101,6 +125,64 @@ local packer_startup = require("packer").startup(function(use)
     end
   }
 
+  -- LSP
+  use {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end
+  }
+
+  use {
+    "neovim/nvim-lspconfig",
+    requires = {
+      "mfussenegger/nvim-jdtls"
+    }
+  }
+
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    after = {
+      "mason.nvim",
+      "nvim-lspconfig"
+    },
+    config = function()
+      local mason_lspconfig = require("mason-lspconfig")
+      mason_lspconfig.setup({})
+
+      mason_lspconfig.setup_handlers({
+        function (server_name)
+          require("lspconfig")[server_name].setup({})
+        end,
+        ["sumneko_lua"] = function()
+          require"lspconfig".sumneko_lua.setup {
+            settings = {
+              Lua = {
+                runtime = {
+                  version = "LuaJIT",
+                },
+                diagnostics = {
+                  globals = {
+                    "vim"
+                  }
+                },
+                workspace = {
+                  library = vim.api.nvim_get_runtime_file("", true)
+                },
+                telemetry = {
+                  enable = false
+                }
+              }
+            }
+          }
+        end,
+        ["jdtls"] = function()
+        end
+      })
+    end
+  }
+
+
   -- Vim practice
   use "ThePrimeagen/vim-be-good"
 end)
@@ -113,3 +195,4 @@ vim.cmd([[
 ]])
 
 return packer_startup
+
