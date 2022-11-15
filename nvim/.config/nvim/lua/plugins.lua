@@ -8,6 +8,7 @@ local packer_startup = require("packer").startup(function(use)
 
   -- Color schemes
   use "Mofiqul/dracula.nvim"
+  use "Mofiqul/vscode.nvim"
   use "folke/tokyonight.nvim"
 
   use {
