@@ -1,0 +1,14 @@
+# Hidden files
+--hidden
+
+# Exclusions
+--glob
+!.git/*
+
+# Case
+--smart-case
+
+# Formatting
+--line-number
+--column
+
