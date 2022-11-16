@@ -15,7 +15,8 @@ local setup = function(use)
             "--line-number",
             "--column",
             "--smart-case",
-            "--hidden"
+            "--hidden",
+            "--glob=!.git/"
           }
         },
         pickers = {
