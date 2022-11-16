@@ -150,6 +150,10 @@ export VISUAL="${EDITOR}"
 # Android development
 export ANDROID_HOME="$HOME/Android/Sdk"
 
+# Ripgrep config
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-neofetch
 source /usr/share/nvm/init-nvm.sh
+
+neofetch
