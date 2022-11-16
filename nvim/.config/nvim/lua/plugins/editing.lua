@@ -22,6 +22,9 @@ local setup = function(use)
       require("Comment").setup()
     end
   }
+
+  -- Detect tab spacing
+  use "tpope/vim-sleuth"
 end
 
 return setup
