@@ -24,12 +24,7 @@ local setup = function(use)
   }
 
   -- Detect tab spacing
-  use {
-    "nmac427/guess-indent.nvim",
-    config = function()
-      require("guess-indent").setup {}
-    end
-  }
+  use "tpope/vim-sleuth"
 end
 
 return setup

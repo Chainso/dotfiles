@@ -1,13 +1,19 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local jdtls_dir = os.getenv("HOME") .. "/.local/share/nvim/mason/packages/jdtls"
+local data_path = vim.fn.stdpath("data")
+local jdtls_dir = data_path .. "/mason/packages/jdtls"
+local java_debug_path = data_path .. "/site/pack/java-debug"
+local vscode_java_test_path = data_path .. "/site/pack/vscode-java-test"
+
 local root_dir = require("jdtls.setup").find_root({".git", "mvnw", "gradlew"})
 
 local workspace_root = os.getenv("HOME") .. "/" .. ".local/share/jdtls"
 vim.fn.mkdir(workspace_root, "p")
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
 
-require("jdtls").start_or_attach({
+local jdtls = require("jdtls")
+
+jdtls.start_or_attach({
   cmd = {
     "java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -23,8 +29,11 @@ require("jdtls").start_or_attach({
     "-configuration", jdtls_dir .. "/config_linux",
     "-data", workspace_root .. "/" .. project_name,
   },
+
   root_dir = root_dir,
+
   capabilities = capabilities,
+
   on_attach = function(client, bufnr)
     local caps = client.server_capabilities
     if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
@@ -39,6 +48,19 @@ require("jdtls").start_or_attach({
       -- fire it first time on load as well
       vim.lsp.buf.semantic_tokens_full()
     end
-  end
+
+    -- With `hotcodereplace = "auto" the debug adapter will try to apply code changes
+    -- you make during a debug session immediately.
+    -- Remove the option if you do not want that.
+    -- You can use the `JdtHotcodeReplace` command to trigger it manually
+    jdtls.setup_dap({ hotcodereplace = "auto" })
+  end,
+
+  init_options = {
+    bundles = {
+      vim.fn.glob(java_debug_path .. "/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1),
+      vim.fn.glob(vscode_java_test_path .. "/server/*.jar", 1)
+    }
+  }
 })
 
