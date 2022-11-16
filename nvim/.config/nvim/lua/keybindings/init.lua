@@ -35,6 +35,13 @@ r.nnoremap("<C-f>", "<C-f>zz")
 r.nnoremap("{", "{zz")
 r.nnoremap("}", "}zz")
 
+-- Terminal
+r.tnoremap("<ESC>", "<C-\\><C-n>")
+
+-- Debugging
+r.nnoremap("<leader>dbg", "<CMD>lua require(\"dap\").continue()<CR>")
+r.nnoremap("<leader>dbp", "<CMD>lua require(\"dap\").toggle_breakpoint()<CR>")
+
 -- LSP
 r.nnoremap("gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
 r.nnoremap("gD", "<CMD>lua vim.lsp.buf.declaration()<CR>")
