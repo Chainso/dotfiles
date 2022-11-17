@@ -52,6 +52,6 @@ r.nnoremap("gr", "<CMD>lua vim.lsp.buf.references()<CR>")
 r.nnoremap("gt", "<CMD>lua vim.lsp.buf.type_definition()<CR>")
 r.nnoremap("gk", "<CMD>lua vim.lsp.buf.hover()<CR>")
 r.nnoremap("gK", "<CMD>lua vim.lsp.buf.signature_help()<CR>")
+r.nnoremap("gl", "<CMD>lua vim.lsp.buf.format()<CR>")
 r.nnoremap("<leader>af", "<CMD>lua vim.lsp.buf.code_action()<CR>")
 r.nnoremap("<leader>rn", "<CMD>lua vim.lsp.buf.rename()<CR>")
-

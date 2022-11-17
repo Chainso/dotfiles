@@ -43,10 +43,10 @@ local setup = function(use)
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
+          { name = "nvim_lua" },
           { name = "luasnip" }, -- For luasnip users.
-        }, {
-            { name = "buffer" },
-          })
+          { name = "buffer" }
+        })
       })
 
       -- Set configuration for specific filetype.
@@ -183,7 +183,6 @@ local setup = function(use)
             vim.fn.system {
               "npm", "run", "build-plugin"
             }
-            
 
             vim.api.nvim_set_current_dir(cwd)
           end
@@ -201,6 +200,8 @@ local setup = function(use)
 
   use "L3MON4D3/LuaSnip"
   use "saadparwaiz1/cmp_luasnip"
+  use "hrsh7th/cmp-nvim-lua"
+
 
   use {
     "theHamsta/nvim-semantic-tokens",

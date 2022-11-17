@@ -7,6 +7,9 @@ local setup = function(use)
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   }
+
+  -- Improve startup
+  use 'lewis6991/impatient.nvim'
 end
 
 return setup
