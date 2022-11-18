@@ -79,6 +79,25 @@ local setup = function(use)
       })
     end
   }
+
+  use {
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      require("lspsaga").init_lsp_saga {
+        symbol_in_winbar = {
+          in_custom = true
+        }
+      }
+    end,
+  }
+
+  use {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end
+  }
 end
 
 return setup
