@@ -2,7 +2,6 @@ local data_path = vim.fn.stdpath("data")
 local packer_path = data_path .. "/site/pack/packer"
 
 local install_path = packer_path .. "/start/packer.nvim"
-local compile_path = packer_path .. "/plugin/packer_compiled.lua"
 
 -- Bootstrap Packer
 local bootstrap_packer = function()
@@ -39,10 +38,7 @@ local packer_startup = packer.startup {
     if bootstrapped_packer then
       packer.sync()
     end
-  end,
-  config = {
-    compile_path = compile_path
-  }
+  end
 }
 
 vim.cmd([[
