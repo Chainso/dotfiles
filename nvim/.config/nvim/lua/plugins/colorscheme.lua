@@ -4,6 +4,7 @@ local setup = function(use)
   use "folke/tokyonight.nvim"
   use "lunarvim/darkplus.nvim"
   use "doums/darcula"
+  use "sam4llis/nvim-tundra"
 end
 
 return setup
