@@ -25,7 +25,7 @@ jdtls.start_or_attach({
     "--add-modules=ALL-SYSTEM",
     "--add-opens", "java.base/java.util=ALL-UNNAMED",
     "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-    "-jar", jdtls_dir .. "/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+    "-jar", vim.fn.glob(jdtls_dir .. "/plugins/org.eclipse.equinox.launcher_*", 1),
     "-configuration", jdtls_dir .. "/config_linux",
     "-data", workspace_root .. "/" .. project_name,
   },
