@@ -157,3 +157,4 @@ export VISUAL="${EDITOR}"
 export ANDROID_HOME="$HOME/Android/Sdk"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

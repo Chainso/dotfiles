@@ -29,3 +29,4 @@ PATH="/usr/games:$PATH"
 
 # For Intel Basekit (VTune and others)
 PATH="/opt/intel/oneapi/vtune/2021.9.0/bin64:$PATH"
+. "$HOME/.cargo/env"
