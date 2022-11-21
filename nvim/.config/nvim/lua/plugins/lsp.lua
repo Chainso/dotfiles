@@ -13,6 +13,15 @@ local setup = function(use)
     }
   }
 
+  -- Golang
+  use {
+    "ray-x/go.nvim",
+    config = function()
+      require('go').setup()
+    end
+  }
+  use "ray-x/guihua.lua" -- recommanded if need floating window support
+
   use {
     "williamboman/mason-lspconfig.nvim",
     after = {
