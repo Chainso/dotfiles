@@ -29,9 +29,22 @@ local setup = function(use)
 
   use {
     "nvim-telescope/telescope-fzf-native.nvim",
+    requires = {"nvim-telescope/telescope.nvim"},
     run = "make",
     config = function()
       require("telescope").load_extension("fzf")
+    end
+  }
+
+  use {
+    "ThePrimeagen/harpoon",
+    requires = {"nvim-telescope/telescope.nvim"},
+    config = function()
+      require("harpoon").setup {
+        mark_branch = true
+      }
+
+      require("telescope").load_extension("harpoon")
     end
   }
 end
