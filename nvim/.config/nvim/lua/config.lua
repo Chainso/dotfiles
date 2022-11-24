@@ -27,6 +27,7 @@ o.shiftwidth = 2
 o.smartindent = true
 o.wrap = true
 o.clipboard = "unnamedplus"
+o.undofile = true
 
 -- Command
 o.wildmenu = true
