@@ -47,6 +47,13 @@ local setup = function(use)
       require("telescope").load_extension("harpoon")
     end
   }
+
+  use {
+    "ggandor/leap.nvim",
+    config = function()
+      require('leap').add_default_mappings()
+    end
+  }
 end
 
 return setup
