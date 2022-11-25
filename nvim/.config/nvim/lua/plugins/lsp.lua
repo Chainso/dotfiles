@@ -9,7 +9,8 @@ local setup = function(use)
   use {
     "neovim/nvim-lspconfig",
     requires = {
-      "mfussenegger/nvim-jdtls"
+      "mfussenegger/nvim-jdtls",
+      "simrat39/rust-tools.nvim"
     }
   }
 
@@ -195,6 +196,14 @@ local setup = function(use)
 
             vim.api.nvim_set_current_dir(cwd)
           end
+        end,
+        ["rust_analyzer"] = function()
+          require("rust-tools").setup({
+            server = {
+              on_attach = function(_, bufnr)
+              end
+            },
+          })
         end
       })
     end
