@@ -6,6 +6,7 @@ r.nnoremap("<leader>ff", "<CMD>Telescope find_files<CR>")
 r.nnoremap("<leader>fg", "<CMD>Telescope live_grep<CR>")
 r.nnoremap("<leader>fb", "<CMD>Telescope buffers<CR>")
 r.nnoremap("<leader>fh", "<CMD>Telescope help_tags<CR>")
+r.nnoremap("<leader>fp", "<CMD>Telescope projects<CR>")
 
 -- Clipboard
 r.xnoremap("<leader>bp", "\"_dP")
