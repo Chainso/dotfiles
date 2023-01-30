@@ -84,7 +84,7 @@ local setup = function(use)
     "glepnir/lspsaga.nvim",
     branch = "main",
     config = function()
-      require("lspsaga").init_lsp_saga {
+      require("lspsaga").setup {
         symbol_in_winbar = {
           in_custom = true
         }
