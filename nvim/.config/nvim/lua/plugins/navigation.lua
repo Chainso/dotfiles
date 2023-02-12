@@ -54,6 +54,13 @@ local setup = function(use)
       require('leap').add_default_mappings()
     end
   }
+
+  use {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup()
+    end
+  }
 end
 
 return setup
