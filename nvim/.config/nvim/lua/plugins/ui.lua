@@ -32,7 +32,13 @@ local setup = function(use)
     end
   }
 
-  use "kevinhwang91/nvim-bqf"
+  -- Better quickfix UI
+  use {
+    "https://gitlab.com/yorickpeterse/nvim-pqf",
+    config = function()
+      require('pqf').setup()
+    end
+  }
 end
 
 return setup

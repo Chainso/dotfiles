@@ -2,11 +2,13 @@ local setup = function(use)
   use {
     "nvim-telescope/telescope.nvim",
     config = function()
-      local telescope_center_mappings = {
+      local trouble = require("trouble.providers.telescope")
+
+      local telescope_mappings = {
         ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
         ["<C-x>"] = require("telescope.actions").select_horizontal + require("telescope.actions").center,
         ["<C-v>"] = require("telescope.actions").select_vertical + require("telescope.actions").center,
-        ["<C-t>"] = require("telescope.actions").select_tab + require("telescope.actions").center
+        ["<C-t>"] = trouble.open_with_trouble
       };
 
       require("telescope").setup({
@@ -25,8 +27,8 @@ local setup = function(use)
             "--hidden"
           },
           mappings = {
-            i = telescope_center_mappings,
-            n = telescope_center_mappings
+            i = telescope_mappings,
+            n = telescope_mappings
           }
         },
         pickers = {
@@ -72,6 +74,20 @@ local setup = function(use)
       require("scrollbar").setup()
     end
   }
+
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  use "kevinhwang91/nvim-bqf"
 end
 
 return setup
