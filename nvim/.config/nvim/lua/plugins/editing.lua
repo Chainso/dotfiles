@@ -98,6 +98,8 @@ local setup = function(use)
       require("inc_rename").setup()
     end
   }
+
+  use "jremmen/vim-ripgrep"
 end
 
 return setup
