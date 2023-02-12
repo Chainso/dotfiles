@@ -8,6 +8,7 @@ r.nnoremap("<leader>fb", "<CMD>Telescope buffers<CR>")
 r.nnoremap("<leader>fh", "<CMD>Telescope help_tags<CR>")
 r.nnoremap("<leader>fp", "<CMD>Telescope projects<CR>")
 r.nnoremap("<leader>fs", "<CMD>Telescope lsp_workspace_symbols<CR>")
+r.nnoremap("<leader>fr", "<CMD>Telescope resume<CR>")
 
 -- Clipboard
 r.xnoremap("<leader>bp", "\"_dP")
