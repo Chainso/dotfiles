@@ -2,6 +2,13 @@ local setup = function(use)
   use {
     "nvim-telescope/telescope.nvim",
     config = function()
+      local telescope_center_mappings = {
+        ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
+        ["<C-x>"] = require("telescope.actions").select_horizontal + require("telescope.actions").center,
+        ["<C-v>"] = require("telescope.actions").select_vertical + require("telescope.actions").center,
+        ["<C-t>"] = require("telescope.actions").select_tab + require("telescope.actions").center
+      };
+
       require("telescope").setup({
         file_ignore_patterns = {
           ".git"
@@ -16,6 +23,10 @@ local setup = function(use)
             "--column",
             "--smart-case",
             "--hidden"
+          },
+          mappings = {
+            i = telescope_center_mappings,
+            n = telescope_center_mappings
           }
         },
         pickers = {
