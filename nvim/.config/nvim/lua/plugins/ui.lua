@@ -31,6 +31,8 @@ local setup = function(use)
       }
     end
   }
+
+  use "kevinhwang91/nvim-bqf"
 end
 
 return setup
