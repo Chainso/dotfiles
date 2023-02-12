@@ -69,13 +69,6 @@ local setup = function(use)
   }
 
   use {
-    "petertriho/nvim-scrollbar",
-    config = function()
-      require("scrollbar").setup()
-    end
-  }
-
-  use {
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
     config = function()

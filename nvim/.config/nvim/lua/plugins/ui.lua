@@ -39,6 +39,13 @@ local setup = function(use)
       require('pqf').setup()
     end
   }
+
+  use {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup()
+    end
+  }
 end
 
 return setup
