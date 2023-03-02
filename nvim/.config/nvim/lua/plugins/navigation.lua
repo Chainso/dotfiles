@@ -16,6 +16,7 @@ local setup = function(use)
           ".git"
         },
         defaults = {
+          wrap_results = true,
           vimgrep_arguments = {
             "rg",
             "--color=never",
