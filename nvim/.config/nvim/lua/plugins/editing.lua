@@ -83,12 +83,16 @@ local setup = function(use)
   use {
     "glepnir/lspsaga.nvim",
     branch = "main",
+    requires = {
+        {"nvim-tree/nvim-web-devicons"},
+        {"nvim-treesitter/nvim-treesitter"}
+    },
     config = function()
-      require("lspsaga").setup {
+      require("lspsaga").setup({
         symbol_in_winbar = {
           in_custom = true
         }
-      }
+      })
     end,
   }
 
