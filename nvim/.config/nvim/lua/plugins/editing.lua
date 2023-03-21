@@ -26,6 +26,9 @@ local setup = function(use)
   -- Detect tab spacing
   use "tpope/vim-sleuth"
 
+  -- Better substitution
+  use "tpope/vim-abolish"
+
   -- Highlight under cursor
   use {
     "RRethy/vim-illuminate",
