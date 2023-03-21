@@ -65,9 +65,14 @@ local setup = function(use)
   }
 
   use {
+    "junegunn/fzf",
+    run = ":call fzf#install()"
+  }
+
+  use {
     "ggandor/leap.nvim",
     config = function()
-      require('leap').add_default_mappings()
+      require("leap").add_default_mappings()
     end
   }
 
