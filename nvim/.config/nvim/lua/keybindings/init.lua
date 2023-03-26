@@ -21,7 +21,6 @@ r.vnoremap("<leader>y", "\"+y")
 r.nnoremap("<leader>d", "\"_d")
 r.vnoremap("<leader>d", "\"_d")
 
-
 -- Searching
 r.nnoremap("<CR>", "<CMD>noh<CR><CR>")
 r.nnoremap("n", "nzz")
@@ -58,6 +57,7 @@ r.nnoremap("<leader>h9", "<CMD>lua require(\"harpoon.ui\").nav_file(9)<CR>")
 
 -- Terminal
 r.tnoremap("<ESC>", "<C-\\><C-n>")
+r.nnoremap("<leader>nt", "<C-w>v<C-w><C-l><CMD>term<CR>i")
 
 -- Debugging
 r.nnoremap("<leader>dbg", "<CMD>lua require(\"dap\").continue()<CR>")
