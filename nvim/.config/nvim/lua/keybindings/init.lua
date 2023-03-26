@@ -57,7 +57,8 @@ r.nnoremap("<leader>h9", "<CMD>lua require(\"harpoon.ui\").nav_file(9)<CR>")
 
 -- Terminal
 r.tnoremap("<ESC>", "<C-\\><C-n>")
-r.nnoremap("<C-w>\\", "<CMD>ToggleTerm direction=vertical<CR>")
+r.nnoremap("<leader>tj", "1<CMD>ToggleTerm direction=vertical<CR>")
+r.nnoremap("<leader>tk", "2<CMD>ToggleTerm direction=horizontal<CR>")
 
 -- Debugging
 r.nnoremap("<leader>dbg", "<CMD>lua require(\"dap\").continue()<CR>")
