@@ -107,6 +107,11 @@ local setup = function(use)
   }
 
   use "jremmen/vim-ripgrep"
+
+  use {
+    "github/copilot.vim",
+    run = ":Copilot setup"
+  }
 end
 
 return setup
