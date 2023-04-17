@@ -35,3 +35,7 @@ o.wildmode = "longest,list,full"
 -- Keybindings
 g.mapleader = " "
 
+-- LSP
+g.copilot_no_tab_map = true
+g.copilot_assume_mapped = true
+
