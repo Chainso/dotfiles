@@ -7,7 +7,7 @@ r.nnoremap("<leader>fg", "<CMD>Telescope live_grep<CR>")
 r.nnoremap("<leader>fb", "<CMD>Telescope buffers<CR>")
 r.nnoremap("<leader>fh", "<CMD>Telescope help_tags<CR>")
 r.nnoremap("<leader>fp", "<CMD>Telescope projects<CR>")
-r.nnoremap("<leader>fs", "<CMD>Telescope lsp_workspace_symbols<CR>")
+r.nnoremap("<leader>fs", "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>")
 r.nnoremap("<leader>fr", "<CMD>Telescope resume<CR>")
 r.nnoremap("<leader>w", "<CMD>Bdelete<CR>")
 
