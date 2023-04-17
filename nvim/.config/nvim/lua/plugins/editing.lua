@@ -86,6 +86,7 @@ local setup = function(use)
   use {
     "glepnir/lspsaga.nvim",
     branch = "main",
+    event = "LspAttach",
     requires = {
         {"nvim-tree/nvim-web-devicons"},
         {"nvim-treesitter/nvim-treesitter"}
