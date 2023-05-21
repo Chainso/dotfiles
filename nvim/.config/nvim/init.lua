@@ -1,5 +1,5 @@
 -- Improve startup time
--- require("impatient")
+require("impatient")
 
 -- Load config
 require("plugin-manager")
