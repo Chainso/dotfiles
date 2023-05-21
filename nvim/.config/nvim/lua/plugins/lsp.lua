@@ -114,8 +114,8 @@ local setup = function(use)
             end
           })
         end,
-        ["sumneko_lua"] = function()
-          require"lspconfig".sumneko_lua.setup {
+        ["lua_ls"] = function()
+          require"lspconfig".lua_ls.setup {
             capabilities = capabilities,
             on_attach = function(client, bufnr)
               local caps = client.server_capabilities

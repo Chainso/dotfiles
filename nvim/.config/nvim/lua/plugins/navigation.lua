@@ -55,9 +55,7 @@ local setup = function(use)
     requires = {"nvim-telescope/telescope.nvim"},
     config = function()
       require("harpoon").setup {
-        global_settings = {
-          mark_branch = true
-        }
+        mark_branch = true
       }
 
       require("telescope").load_extension("harpoon")
