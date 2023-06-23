@@ -61,8 +61,12 @@ r.nnoremap("<leader>tj", "1<CMD>ToggleTerm direction=vertical<CR>")
 r.nnoremap("<leader>tk", "2<CMD>ToggleTerm direction=horizontal<CR>")
 
 -- Debugging
-r.nnoremap("<leader>dbg", "<CMD>lua require(\"dap\").continue()<CR>")
-r.nnoremap("<leader>dbp", "<CMD>lua require(\"dap\").toggle_breakpoint()<CR>")
+r.nnoremap("<leader>dbg", "<CMD>DapContinue<CR>")
+r.nnoremap("<leader>dbin", "<CMD>DapStepInto<CR>")
+r.nnoremap("<leader>dbou", "<CMD>DapStepOut<CR>")
+r.nnoremap("<leader>dbov", "<CMD>DapStepOver<CR>")
+r.nnoremap("<leader>dbs", "<CMD>DapStop<CR>")
+r.nnoremap("<leader>dbp", "<CMD>DapToggleBreakpoint<CR>")
 
 -- LSP
 r.nnoremap("gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
