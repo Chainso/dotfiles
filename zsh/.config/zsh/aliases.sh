@@ -26,3 +26,7 @@ function gcsq() {
   gsq $1
 }
 
+# Python
+penv() {
+  source .venv/bin/activate
+}
