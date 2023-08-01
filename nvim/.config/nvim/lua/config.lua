@@ -38,4 +38,11 @@ g.mapleader = " "
 -- LSP
 g.copilot_no_tab_map = true
 g.copilot_assume_mapped = true
-
+g.copilot_filetypes = {
+  dapui_watches = false,
+  dapui_stacks = false,
+  dapui_breakpoints = false,
+  dapui_scopes = false,
+  dapui_console = false,
+  dapui_repl = false
+}
