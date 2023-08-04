@@ -5,10 +5,18 @@
 --glob
 !.git/*
 
+--glob
+!dependencies.lock
+
+--glob
+!nodule_modules/*
+
+--glob
+!Cargo.lock
+
 # Case
 --smart-case
 
 # Formatting
 --line-number
 --column
-
