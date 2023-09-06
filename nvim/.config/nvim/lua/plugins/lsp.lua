@@ -24,6 +24,17 @@ local setup = function(use)
   use "ray-x/guihua.lua" -- recommanded if need floating window support
 
   use {
+    "akinsho/flutter-tools.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
+    },
+    config = function()
+      require("flutter-tools").setup {}
+    end
+  }
+
+  use {
     "williamboman/mason-lspconfig.nvim",
     after = {
       "mason.nvim",
