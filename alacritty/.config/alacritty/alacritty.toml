@@ -1,0 +1,5 @@
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control"
+
