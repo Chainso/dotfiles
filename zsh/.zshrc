@@ -149,6 +149,9 @@ export VISUAL="${EDITOR}"
 
 # Android development
 export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:/opt/flutter/bin"
+export CHROME_EXECUTABLE="google-chrome-stable"
 
 # Ripgrep config
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
