@@ -54,7 +54,6 @@ jdtls.start_or_attach({
     -- Remove the option if you do not want that.
     -- You can use the `JdtHotcodeReplace` command to trigger it manually
     jdtls.setup_dap({ hotcodereplace = "auto" })
-    jdtls.setup.add_commands()
   end,
 
   init_options = {
