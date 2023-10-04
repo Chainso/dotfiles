@@ -1,31 +1,31 @@
-local setup = function(use)
-  use {
+return {
+  {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
     end
-  }
+  },
 
-  use {
+  {
     "neovim/nvim-lspconfig",
-    requires = {
+    dependencies = {
       "mfussenegger/nvim-jdtls",
       "simrat39/rust-tools.nvim"
     }
-  }
+  },
 
   -- Golang
-  use {
+  {
     "ray-x/go.nvim",
     config = function()
       require('go').setup()
     end
-  }
-  use "ray-x/guihua.lua" -- recommanded if need floating window support
+  },
+  "ray-x/guihua.lua", -- recommanded if need floating window support
 
-  use {
+  {
     "akinsho/flutter-tools.nvim",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
@@ -36,11 +36,11 @@ local setup = function(use)
         }
       })
     end
-  }
+  },
 
-  use {
+  {
     "williamboman/mason-lspconfig.nvim",
-    after = {
+    dependencies = {
       "mason.nvim",
       "nvim-lspconfig"
     },
@@ -214,21 +214,20 @@ local setup = function(use)
         end
       })
     end
-  }
+  },
 
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/cmp-cmdline"
-  use "petertriho/cmp-git"
-  use "hrsh7th/nvim-cmp"
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "petertriho/cmp-git",
+  "hrsh7th/nvim-cmp",
 
-  use "L3MON4D3/LuaSnip"
-  use "saadparwaiz1/cmp_luasnip"
-  use "hrsh7th/cmp-nvim-lua"
+  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
+  "hrsh7th/cmp-nvim-lua",
 
-
-  use {
+  {
     "theHamsta/nvim-semantic-tokens",
     config = function()
       require("nvim-semantic-tokens").setup {
@@ -242,7 +241,5 @@ local setup = function(use)
       }
     end
   }
-end
-
-return setup
+}
 

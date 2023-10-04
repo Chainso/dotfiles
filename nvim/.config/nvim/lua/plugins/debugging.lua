@@ -1,7 +1,7 @@
-local setup = function(use)
-  use {
+return {
+  {
     "rcarriga/nvim-dap-ui",
-    requires = {"mfussenegger/nvim-dap"},
+    dependencies = {"mfussenegger/nvim-dap"},
     config = function()
       local dap, dapui = require("dap"), require("dapui")
       dapui.setup()
@@ -16,15 +16,13 @@ local setup = function(use)
         dapui.close()
       end
     end
-  }
+  },
 
-  use {
+  {
     "mfussenegger/nvim-dap-python",
     config = function()
       require("dap-python").setup("python3")
     end
   }
-end
-
-return setup
+}
 

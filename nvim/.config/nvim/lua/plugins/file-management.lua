@@ -1,7 +1,7 @@
-local setup = function(use)
-  use {
+return {
+  {
     "nvim-tree/nvim-tree.lua",
-    requires = {
+    dependencies = {
       "nvim-tree/nvim-web-devicons", -- optional, for file icons
     },
     config = function()
@@ -14,16 +14,14 @@ local setup = function(use)
         },
       })
     end
-  }
+  },
 
-  use {
+  {
     "ahmedkhalf/project.nvim",
     config = function()
       require("project_nvim").setup {}
       require("telescope").load_extension("projects")
     end
   }
-end
-
-return setup
+}
 

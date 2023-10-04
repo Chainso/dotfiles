@@ -1,8 +1,8 @@
-local setup = function(use)
-  use {
+return {
+  {
     "nvim-treesitter/nvim-treesitter",
-    requires = {"p00f/nvim-ts-rainbow"},
-    run = ":TSUpdate",
+    dependencies = {"p00f/nvim-ts-rainbow"},
+    build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
         auto_install = true,
@@ -26,7 +26,5 @@ local setup = function(use)
       -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
     end
   }
-end
-
-return setup
+}
 

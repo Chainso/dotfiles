@@ -1,5 +1,5 @@
-local setup = function(use)
-  use {
+return {
+  {
     "nvim-telescope/telescope.nvim",
     config = function()
       local trouble = require("trouble.providers.telescope")
@@ -39,20 +39,20 @@ local setup = function(use)
         }
       })
     end
-  }
+  },
 
-  use {
+  {
     "nvim-telescope/telescope-fzf-native.nvim",
-    requires = {"nvim-telescope/telescope.nvim"},
-    run = "make",
+    dependencies = {"nvim-telescope/telescope.nvim"},
+    build = "make",
     config = function()
       require("telescope").load_extension("fzf")
     end
-  }
+  },
 
-  use {
+  {
     "ThePrimeagen/harpoon",
-    requires = {"nvim-telescope/telescope.nvim"},
+    dependencies = {"nvim-telescope/telescope.nvim"},
     config = function()
       require("harpoon").setup {
         global_settings = {
@@ -62,23 +62,23 @@ local setup = function(use)
 
       require("telescope").load_extension("harpoon")
     end
-  }
+  },
 
-  use {
+  {
     "junegunn/fzf",
-    run = ":call fzf#install()"
-  }
+    build = ":call fzf#install()"
+  },
 
-  use {
+  {
     "ggandor/leap.nvim",
     config = function()
       require("leap").add_default_mappings()
     end
-  }
+  },
 
-  use {
+  {
     "folke/trouble.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("trouble").setup {
         -- your configuration comes here
@@ -86,10 +86,8 @@ local setup = function(use)
         -- refer to the configuration section below
       }
     end
-  }
+  },
 
-  use "kevinhwang91/nvim-bqf"
-end
-
-return setup
+  "kevinhwang91/nvim-bqf"
+}
 

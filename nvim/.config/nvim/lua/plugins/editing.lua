@@ -1,36 +1,36 @@
-local setup = function(use)
-  use {
+return {
+  {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
       })
     end
-  }
+  },
 
-  use {
+  {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup()
     end
-  }
+  },
 
-  use {
+  {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
     end
-  }
+  },
 
   -- Detect tab spacing
-  use "tpope/vim-sleuth"
+  "tpope/vim-sleuth",
 
   -- Better substitution
-  use "tpope/vim-abolish"
+  "tpope/vim-abolish",
 
   -- Highlight under cursor
-  use {
+ {
     "RRethy/vim-illuminate",
     config = function()
       -- default configuration
@@ -81,13 +81,13 @@ local setup = function(use)
         min_count_to_highlight = 1,
       })
     end
-  }
+  },
 
-  use {
+  {
     "glepnir/lspsaga.nvim",
     branch = "main",
     event = "LspAttach",
-    requires = {
+    dependencies = {
         {"nvim-tree/nvim-web-devicons"},
         {"nvim-treesitter/nvim-treesitter"}
     },
@@ -98,9 +98,9 @@ local setup = function(use)
         }
       })
     end,
-  }
+  },
 
-  use {
+  {
     "ray-x/lsp_signature.nvim",
     config = function()
       require("lsp_signature").setup({
@@ -110,22 +110,20 @@ local setup = function(use)
         }
       })
     end
-  }
+  },
 
-  use {
+  {
     "smjonas/inc-rename.nvim",
     config = function()
       require("inc_rename").setup()
     end
-  }
+  },
 
-  use "jremmen/vim-ripgrep"
+  "jremmen/vim-ripgrep",
 
-  use {
+  {
     "github/copilot.vim",
-    run = ":Copilot setup"
+    build = ":Copilot setup"
   }
-end
-
-return setup
+}
 

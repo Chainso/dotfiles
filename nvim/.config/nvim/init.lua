@@ -2,7 +2,7 @@
 require("impatient")
 
 -- Load config
-require("plugin-manager")
 require("config")
+require("plugin-manager")
 require("keybindings")
 

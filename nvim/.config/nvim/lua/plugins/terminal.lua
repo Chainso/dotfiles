@@ -1,8 +1,8 @@
-local setup = function(use)
+return {
   -- Terminal
-  use {
+  {
     "akinsho/toggleterm.nvim",
-    tag = "*",
+    version = "*",
     config = function()
       require("toggleterm").setup {
         size = function(term)
@@ -16,10 +16,8 @@ local setup = function(use)
         direction = "vertical"
       }
     end
-  }
+  },
 
-  use "mhinz/neovim-remote"
-end
-
-return setup
+  "mhinz/neovim-remote"
+}
 

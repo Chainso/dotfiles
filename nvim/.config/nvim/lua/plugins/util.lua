@@ -1,16 +1,14 @@
-local setup = function(use)
+return {
   -- Useful functions
-  use "nvim-lua/plenary.nvim"
+  "nvim-lua/plenary.nvim",
 
   -- Markdown
-  use {
+  {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  }
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
 
   -- Improve startup
-  use 'lewis6991/impatient.nvim'
-end
-
-return setup
+  'lewis6991/impatient.nvim'
+}
 
