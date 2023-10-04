@@ -124,6 +124,8 @@ return {
   {
     "github/copilot.vim",
     build = ":Copilot setup"
-  }
+  },
+
+  "lambdalisue/suda.vim"
 }
 
