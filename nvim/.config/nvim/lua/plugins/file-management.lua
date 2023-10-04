@@ -6,6 +6,16 @@ return {
     },
     config = function()
       require("nvim-tree").setup({
+        actions = {
+          open_file = {
+            resize_window = false
+          }
+        },
+        view = {
+          preserve_window_proportions = true,
+          width = "20%",
+          side = "left"
+        },
         sync_root_with_cwd = true,
         respect_buf_cwd = true,
         update_focused_file = {
