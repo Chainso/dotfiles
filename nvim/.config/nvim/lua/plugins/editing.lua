@@ -84,7 +84,7 @@ return {
   },
 
   {
-    "glepnir/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
     branch = "main",
     event = "LspAttach",
     dependencies = {
