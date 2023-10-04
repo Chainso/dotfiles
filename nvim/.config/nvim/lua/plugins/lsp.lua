@@ -30,7 +30,11 @@ local setup = function(use)
       "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
     config = function()
-      require("flutter-tools").setup {}
+      require("flutter-tools").setup({
+        debugger = {
+          enabled = true,
+        }
+      })
     end
   }
 
