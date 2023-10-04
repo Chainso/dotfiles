@@ -44,5 +44,9 @@ g.copilot_filetypes = {
   dapui_breakpoints = false,
   dapui_scopes = false,
   dapui_console = false,
-  dapui_repl = false
+  dapui_repl = false,
+  markdown = true
 }
+
+-- Sudo
+g.suda_smart_edit = 1
