@@ -160,3 +160,11 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 source /usr/share/nvm/init-nvm.sh
 
 neofetch
+
+# pnpm
+export PNPM_HOME="/home/chanzo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
