@@ -88,6 +88,13 @@ return {
     end
   },
 
+  {
+    "ziontee113/syntax-tree-surfer",
+    config = function()
+      require("syntax-tree-surfer").setup { }
+    end
+  },
+
   "kevinhwang91/nvim-bqf"
 }
 
