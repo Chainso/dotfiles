@@ -7,7 +7,7 @@ return {
   "sam4llis/nvim-tundra",
   {
     "catppuccin/nvim",
-    name = "catppucin",
+    name = "catppuccin",
     priority = 1000
   }
 }
