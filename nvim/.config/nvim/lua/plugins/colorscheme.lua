@@ -4,5 +4,10 @@ return {
   "folke/tokyonight.nvim",
   "lunarvim/darkplus.nvim",
   "doums/darcula",
-  "sam4llis/nvim-tundra"
+  "sam4llis/nvim-tundra",
+  {
+    "catppuccin/nvim",
+    name = "catppucin",
+    priority = 1000
+  }
 }
