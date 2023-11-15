@@ -30,3 +30,8 @@ function gcsq() {
 penv() {
   source .venv/bin/activate
 }
+
+penvm() {
+  source $HOME/.venv/main/bin/activate
+}
+
