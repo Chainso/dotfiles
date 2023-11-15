@@ -67,12 +67,6 @@ r.xnoremap("H", "<cmd>STSSelectParentNode<cr>")
 r.xnoremap("L", "<cmd>STSSelectChildNode<cr>")
 r.xnoremap("<A-j>", "<cmd>STSSwapNextVisual<cr>")
 r.xnoremap("<A-k>", "<cmd>STSSwapPrevVisual<cr>")
-r.xnoremap("J", "<CMD>STSSelectNextSiblingNode<CR>")
-r.xnoremap("K", "<CMD>STSSelectPrevSiblingNode<CR>")
-r.xnoremap("H", "<CMD>STSSelectParentNode<CR>")
-r.xnoremap("L", "<CMD>STSSelectChildNode<CR>")
-r.xnoremap("<A-j>", "<CMD>STSSwapNextVisual<CR>")
-r.xnoremap("<A-k>", "<CMD>STSSwapPrevVisual<CR>")
 
 -- Terminal
 r.tnoremap("<ESC>", "<C-\\><C-n>")
