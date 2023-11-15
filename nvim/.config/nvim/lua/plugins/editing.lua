@@ -126,6 +126,8 @@ return {
     build = ":Copilot setup"
   },
 
-  "lambdalisue/suda.vim"
+  "lambdalisue/suda.vim",
+
+  "sindrets/diffview.nvim"
 }
 
