@@ -8,8 +8,5 @@ return {
       })
     end
   },
-
-  -- Git integration
-  "tpope/vim-fugitive"
 }
 

@@ -127,7 +127,5 @@ return {
   },
 
   "lambdalisue/suda.vim",
-
-  "sindrets/diffview.nvim"
 }
 
