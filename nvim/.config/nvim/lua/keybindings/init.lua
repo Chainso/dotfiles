@@ -74,6 +74,7 @@ r.nnoremap("<leader>tj", "1<CMD>ToggleTerm direction=vertical<CR>")
 r.nnoremap("<leader>tk", "2<CMD>ToggleTerm direction=horizontal<CR>")
 
 -- Debugging
+r.nnoremap("<leader>dbui", "<CMD>DapUiToggle<CR>")
 r.nnoremap("<leader>dbg", "<CMD>DapContinue<CR>")
 r.nnoremap("<leader>dbin", "<CMD>DapStepInto<CR>")
 r.nnoremap("<leader>dbou", "<CMD>DapStepOut<CR>")
@@ -99,3 +100,8 @@ r.nnoremap("]e", "<CMD>Lspsaga diagnostic_jump_next<CR>")
 r.nnoremap("<leader>cd", "<CMD>Lspsaga show_cursor_diagnostics<CR>")
 r.ienoremap("<M-Enter>", "copilot#Accept(\"<CR>\")")
 
+-- Source Control
+r.nnoremap("<leader>hs", "<CMD>Gitsigns stage_hunk<CR>")
+r.nnoremap("<leader>hr", "<CMD>Gitsigns reset_hunk<CR>")
+r.nnoremap("<leader>dvo", "<CMD>DiffviewOpen<CR>")
+r.nnoremap("<leader>dvc", "<CMD>DiffviewClose<CR>")

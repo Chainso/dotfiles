@@ -6,8 +6,8 @@ local java_debug_path = data_path .. "/site/pack/java-debug"
 local vscode_java_test_path = data_path .. "/site/pack/vscode-java-test"
 
 local root_dir = require("jdtls.setup").find_root({".git", "mvnw", "gradlew"})
-
-local workspace_root = os.getenv("HOME") .. "/" .. ".local/share/jdtls"
+local home = os.getenv("HOME")
+local workspace_root = home .. "/.local/share/jdtls"
 vim.fn.mkdir(workspace_root, "p")
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
 
@@ -35,19 +35,20 @@ jdtls.start_or_attach({
   capabilities = capabilities,
 
   on_attach = function(client, bufnr)
-    local caps = client.server_capabilities
-    if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-      local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
-      vim.api.nvim_create_autocmd("TextChanged", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.semantic_tokens_full()
-        end,
-      })
-      -- fire it first time on load as well
-      vim.lsp.buf.semantic_tokens_full()
-    end
+    -- TODO: find out if needed after semantic tokens is merged upstream with neovim
+    -- local caps = client.server_capabilities
+    -- if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+    --   local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
+    --   vim.api.nvim_create_autocmd("TextChanged", {
+    --     group = augroup,
+    --     buffer = bufnr,
+    --     callback = function()
+    --       vim.lsp.buf.semantic_tokens_full()
+    --     end,
+    --   })
+    --   -- fire it first time on load as well
+    --   vim.lsp.buf.semantic_tokens_full()
+    -- end
 
     -- With `hotcodereplace = "auto" the debug adapter will try to apply code changes
     -- you make during a debug session immediately.
