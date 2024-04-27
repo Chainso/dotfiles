@@ -35,3 +35,6 @@ penvm() {
   source $HOME/.venv/main/bin/activate
 }
 
+
+# Java
+alias gw="./gradlew"
