@@ -47,7 +47,6 @@ g.copilot_filetypes = {
   dapui_repl = false,
   markdown = true
 }
-g.copilot_enabled = false
 
 -- Sudo
 g.suda_smart_edit = 1
