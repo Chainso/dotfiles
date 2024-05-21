@@ -50,3 +50,5 @@ g.copilot_filetypes = {
 
 -- Sudo
 g.suda_smart_edit = 1
+
+vim.lsp.set_log_level("error")
