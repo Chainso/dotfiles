@@ -22,6 +22,7 @@ r.nnoremap("<leader>d", "\"_d")
 r.vnoremap("<leader>d", "\"_d")
 
 -- Searching
+r.nnoremaps("<ESC>", "<ESC><CMD>noh<CR><CMD>lua require('notify').dismiss()<CR>", {silent = true})
 r.nnoremap("<CR>", "<CMD>noh<CR><CR>")
 r.nnoremap("n", "nzz")
 r.nnoremap("N", "Nzz")

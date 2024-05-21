@@ -48,6 +48,27 @@ return {
     config = function()
       require("scrollbar").setup()
     end
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    dependencies = {"nvim-telescope/telescope.nvim"},
+    config = function()
+      -- Snippet to use notify for regular prints
+      -- https://www.reddit.com/r/neovim/comments/xv3v68/tip_nvimnotify_can_be_used_to_display_print/ 
+      -- Overriding vim.notify with fancy notify if fancy notify exists
+      local notify = require("notify")
+      vim.notify = notify
+      print = function(...)
+        local print_safe_args = {}
+        local _ = { ... }
+        for i = 1, #_ do
+          table.insert(print_safe_args, tostring(_[i]))
+        end
+        notify(table.concat(print_safe_args, ' '), "info")
+      end
+      notify.setup()
+    end
   }
 }
 

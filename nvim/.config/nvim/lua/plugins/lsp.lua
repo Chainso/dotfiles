@@ -6,11 +6,14 @@ return {
     end
   },
 
+  "folke/neoconf.nvim",
+
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       "mfussenegger/nvim-jdtls",
-      "simrat39/rust-tools.nvim"
+      "simrat39/rust-tools.nvim",
+      "folke/neoconf.nvim"
     }
   },
 
@@ -42,7 +45,8 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
       "mason.nvim",
-      "nvim-lspconfig"
+      "nvim-lspconfig",
+      "folke/neoconf.nvim",
     },
     config = function()
       local cmp = require("cmp")
@@ -79,8 +83,8 @@ return {
         sources = cmp.config.sources({
           { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
         }, {
-            { name = "buffer" },
-          })
+          { name = "buffer" },
+        })
       })
 
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won"t work anymore).
@@ -97,11 +101,15 @@ return {
         sources = cmp.config.sources({
           { name = "path" }
         }, {
-            { name = "cmdline" }
-          })
+          { name = "cmdline" }
+        })
       })
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      require("neoconf").setup({
+        -- override any of the default settings here
+      })
 
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({})
@@ -109,7 +117,7 @@ return {
       local lspconfig = require("lspconfig")
 
       mason_lspconfig.setup_handlers({
-        function (server_name)
+        function(server_name)
           lspconfig[server_name].setup({
             capabilities = capabilities,
             -- TODO: find out if needed after semantic tokens is merged upstream with neovim
@@ -131,7 +139,7 @@ return {
           })
         end,
         ["lua_ls"] = function()
-          require"lspconfig".lua_ls.setup {
+          require("lspconfig").lua_ls.setup {
             capabilities = capabilities,
             -- TODO: find out if needed after semantic tokens is merged upstream with neovim
             -- on_attach = function(client, bufnr)
@@ -227,8 +235,6 @@ return {
 
   {
     "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!).
     build = "make install_jsregexp"
   },
