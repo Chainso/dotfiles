@@ -2,7 +2,12 @@ return {
   {
     "williamboman/mason.nvim",
     config = function()
-      require("mason").setup()
+      require("mason").setup({
+        registries = {
+          "github:nvim-java/mason-registry",
+          "github:mason-org/mason-registry"
+        }
+      })
     end
   },
 
@@ -14,6 +19,21 @@ return {
       "mfussenegger/nvim-jdtls",
       "simrat39/rust-tools.nvim",
       "folke/neoconf.nvim"
+    }
+  },
+
+  {
+    'nvim-java/nvim-java',
+    dependencies = {
+      "nvim-java/lua-async-await",
+      "nvim-java/nvim-java-refactor",
+      "nvim-java/nvim-java-core",
+      "nvim-java/nvim-java-test",
+      "nvim-java/nvim-java-dap",
+      "MunifTanjim/nui.nvim",
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap",
+      'williamboman/mason.nvim',
     }
   },
 
@@ -177,50 +197,9 @@ return {
             }
           }
         end,
-        -- Set up in ftplugin/java.lua
         ["jdtls"] = function()
-          local data_path = vim.fn.stdpath("data")
-          local java_debug_path = data_path .. "/site/pack/java-debug"
-          local vscode_java_test_path = data_path .. "/site/pack/vscode-java-test"
-          local cwd = vim.fn.getcwd()
-
-          -- Java Debug
-          if vim.fn.empty(vim.fn.glob(java_debug_path)) > 0 then
-            vim.fn.system({
-              "git", "clone",
-              "https://github.com/microsoft/java-debug",
-              java_debug_path
-            })
-
-            vim.api.nvim_set_current_dir(java_debug_path)
-
-            vim.fn.system {
-              "./mvnw", "clean", "install"
-            }
-
-            vim.api.nvim_set_current_dir(cwd)
-          end
-
-          -- VSCode Java Test
-          if vim.fn.empty(vim.fn.glob(vscode_java_test_path)) > 0 then
-            vim.fn.system {
-              "git", "clone",
-              "https://github.com/microsoft/vscode-java-test",
-              vscode_java_test_path
-            }
-
-            vim.api.nvim_set_current_dir(vscode_java_test_path)
-
-            vim.fn.system {
-              "npm", "install"
-            }
-
-            vim.fn.system {
-              "npm", "run", "build-plugin"
-            }
-
-            vim.api.nvim_set_current_dir(cwd)
-          end
+          require("java").setup()
+          require('lspconfig').jdtls.setup({})
         end
       })
     end
