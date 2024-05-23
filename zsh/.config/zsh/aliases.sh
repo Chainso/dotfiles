@@ -26,6 +26,10 @@ function gcsq() {
   gsq $1
 }
 
+function gdd() {
+  nvim -c "DiffviewOpen -- $1"
+}
+
 # Python
 penv() {
   source .venv/bin/activate
