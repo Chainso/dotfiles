@@ -27,7 +27,7 @@ function gcsq() {
 }
 
 function gdd() {
-  nvim -c "DiffviewOpen -- $1"
+  nvim -c "DiffviewOpen $1"
 }
 
 # Python
