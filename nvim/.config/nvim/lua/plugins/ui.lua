@@ -52,7 +52,6 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    dependencies = {"nvim-telescope/telescope.nvim"},
     config = function()
       -- Snippet to use notify for regular prints
       -- https://www.reddit.com/r/neovim/comments/xv3v68/tip_nvimnotify_can_be_used_to_display_print/ 

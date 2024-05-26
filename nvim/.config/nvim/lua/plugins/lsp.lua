@@ -9,11 +9,19 @@ return {
   "folke/neoconf.nvim",
 
   {
+    "mfussenegger/nvim-jdtls",
+    dependencies = {
+      "rcarriga/nvim-notify"
+    }
+  },
+
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "mfussenegger/nvim-jdtls",
       "simrat39/rust-tools.nvim",
-      "folke/neoconf.nvim"
+      "folke/neoconf.nvim",
+      "rcarriga/nvim-notify"
     }
   },
 
@@ -44,8 +52,8 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
-      "mason.nvim",
-      "nvim-lspconfig",
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
       "folke/neoconf.nvim",
     },
     config = function()
