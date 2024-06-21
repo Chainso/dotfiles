@@ -135,6 +135,8 @@ return {
     config = function()
       require('gitsigns').setup()
     end
-  }
+  },
+
+  "chrisbra/csv.vim"
 }
 
