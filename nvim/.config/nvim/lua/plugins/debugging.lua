@@ -19,6 +19,17 @@ return {
     end
   },
 
-  "nvim-neotest/nvim-nio"
+  "nvim-neotest/nvim-nio",
+
+  {
+    "stevearc/overseer.nvim",
+    dependencies = {"mfussenegger/nvim-dap"},
+    opts = {},
+    config = function()
+      require("overseer").setup({
+        strategy = "toggleterm"
+      })
+    end
+  }
 }
 
