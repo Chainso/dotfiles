@@ -2,23 +2,31 @@ return {
   {
     "williamboman/mason.nvim",
     config = function()
-      require("mason").setup()
+      require("mason").setup({
+        registries = {
+          'github:nvim-java/mason-registry',
+          'github:mason-org/mason-registry',
+        },
+      })
     end
   },
 
   "folke/neoconf.nvim",
 
   {
-    "mfussenegger/nvim-jdtls",
+    "nvim-java/nvim-java",
     dependencies = {
       "rcarriga/nvim-notify"
-    }
+    },
+    config = function()
+      require('java').setup()
+    end
   },
 
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "mfussenegger/nvim-jdtls",
+      "nvim-java/nvim-java",
       "simrat39/rust-tools.nvim",
       "folke/neoconf.nvim",
       "rcarriga/nvim-notify"
@@ -185,51 +193,6 @@ return {
             }
           }
         end,
-        -- Set up in ftplugin/java.lua
-        ["jdtls"] = function()
-          local data_path = vim.fn.stdpath("data")
-          local java_debug_path = data_path .. "/site/pack/java-debug"
-          local vscode_java_test_path = data_path .. "/site/pack/vscode-java-test"
-          local cwd = vim.fn.getcwd()
-
-          -- Java Debug
-          if vim.fn.empty(vim.fn.glob(java_debug_path)) > 0 then
-            vim.fn.system({
-              "git", "clone",
-              "https://github.com/microsoft/java-debug",
-              java_debug_path
-            })
-
-            vim.api.nvim_set_current_dir(java_debug_path)
-
-            vim.fn.system {
-              "./mvnw", "clean", "install"
-            }
-
-            vim.api.nvim_set_current_dir(cwd)
-          end
-
-          -- VSCode Java Test
-          if vim.fn.empty(vim.fn.glob(vscode_java_test_path)) > 0 then
-            vim.fn.system {
-              "git", "clone",
-              "https://github.com/microsoft/vscode-java-test",
-              vscode_java_test_path
-            }
-
-            vim.api.nvim_set_current_dir(vscode_java_test_path)
-
-            vim.fn.system {
-              "npm", "install"
-            }
-
-            vim.fn.system {
-              "npm", "run", "build-plugin"
-            }
-
-            vim.api.nvim_set_current_dir(cwd)
-          end
-        end
       })
     end
   },
