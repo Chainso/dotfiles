@@ -35,6 +35,17 @@ return {
       require("project_nvim").setup {}
       require("telescope").load_extension("projects")
     end
+  },
+
+  {
+    "Shatur/neovim-session-manager",
+    config = function()
+      local config = require('session_manager.config')
+
+      require("session_manager").setup({
+        autoload_mode = { config.AutoloadMode.GitSession },
+      })
+    end
   }
 }
 

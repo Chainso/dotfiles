@@ -47,8 +47,10 @@ g.copilot_filetypes = {
   dapui_repl = false,
   markdown = true
 }
+vim.lsp.set_log_level("error")
+
+-- Sessions
+o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Sudo
 g.suda_smart_edit = 1
-
-vim.lsp.set_log_level("error")

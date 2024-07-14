@@ -81,7 +81,7 @@ r.nnoremap("<leader>dbin", "<CMD>DapStepInto<CR>")
 r.nnoremap("<leader>dbou", "<CMD>DapStepOut<CR>")
 r.nnoremap("<leader>dbov", "<CMD>DapStepOver<CR>")
 r.nnoremap("<leader>dbs", "<CMD>DapStop<CR>")
-r.nnoremap("<leader>dbp", "<CMD>DapToggleBreakpoint<CR>")
+r.nnoremap("<leader>dbp", "<CMD>PBToggleBreakpoint<CR>")
 
 -- LSP
 r.nnoremap("gd", "<CMD>lua vim.lsp.buf.definition()<CR>")
