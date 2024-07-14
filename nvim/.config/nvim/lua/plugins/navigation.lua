@@ -1,14 +1,17 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "folke/trouble.nvim"
+    },
     config = function()
-      local trouble = require("trouble.providers.telescope")
+      local open_with_trouble = require("trouble.sources.telescope").open
 
       local telescope_mappings = {
         ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center,
         ["<C-x>"] = require("telescope.actions").select_horizontal + require("telescope.actions").center,
         ["<C-v>"] = require("telescope.actions").select_vertical + require("telescope.actions").center,
-        ["<C-t>"] = trouble.open_with_trouble
+        ["<C-t>"] = open_with_trouble
       };
 
       require("telescope").setup({
