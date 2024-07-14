@@ -38,23 +38,14 @@ return {
   },
 
   {
-    "rmagatti/auto-session",
-    dependencies = {
-      'nvim-telescope/telescope.nvim', -- Only needed if you want to use sesssion lens
-    },
+    "Shatur/neovim-session-manager",
     config = function()
-      require('auto-session').setup({
-        auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-        auto_session_use_git_branch = true,
-      })
-    end,
-  },
+      local config = require('session_manager.config')
 
-  {
-    "rmagatti/session-lens",
-    requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
-    config = function()
-      require('session-lens').setup({ --[[your custom config--]] })
+      require("session_manager").setup({
+        autoload_mode = { config.AutoloadMode.GitSession },
+      })
     end
-  },
+  }
 }
+
