@@ -3,7 +3,7 @@ local r = require("keybindings/remap")
 -- File management
 r.nnoremap("<leader>ep", "<CMD>NvimTreeToggle<CR>")
 r.nnoremap("<leader>ff", "<CMD>Telescope find_files<CR>")
-r.nnoremap("<leader>fg", "<CMD>Telescope live_grep<CR>")
+r.nnoremap("<leader>fg", "<CMD>Telescope live_grep_args<CR>")
 r.nnoremap("<leader>fb", "<CMD>Telescope buffers<CR>")
 r.nnoremap("<leader>fh", "<CMD>Telescope help_tags<CR>")
 r.nnoremap("<leader>fp", "<CMD>Telescope projects<CR>")
