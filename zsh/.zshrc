@@ -126,6 +126,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin
 ## NVIDIA for Mujoco
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
 
+source /etc/profile
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$($HOME'/Programs/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
