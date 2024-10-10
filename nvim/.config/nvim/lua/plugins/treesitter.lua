@@ -18,7 +18,8 @@ return {
         }
       }
     end
-  }
+  },
+
   -- {
   --   "hiphish/rainbow-delimiters.nvim",
   --   build = ":TSUpdate"
