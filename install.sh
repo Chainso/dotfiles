@@ -37,6 +37,10 @@ to_install=(
   "ripgrep"
   "rofi"
   "zsh"
+
+  # Not explicitly config related but used
+  "zoxide"
+  "thefuck"
 )
 
 for installer in "${to_install[@]}"; do
