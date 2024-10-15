@@ -3,9 +3,9 @@
 os=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
 installers_base_dir="./installers"
 
-if [ "$os" == "Ubuntu" ]; then
+if [ "$os" == '"Ubuntu"' ]; then
   installers_arch_dir="ubuntu"
-elif [ "$os" == "Arch Linux" ]; then
+elif [ "$os" == '"Arch Linux"' ]; then
   installers_arch_dir="arch"
 else
   echo "Unsupported OS $os for automated install, please install manually"
