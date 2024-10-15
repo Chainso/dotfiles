@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# First add all of the dotfiles so existing config files can be found during installations
+make dotfiles
+
 os=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
 installers_base_dir="./installers"
 
