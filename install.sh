@@ -1,11 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
-os=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+os_quoted=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+os=$(echo "$os_quoted" | xargs)
 installers_base_dir="./installers"
 
-if [ "$os" == '"Ubuntu"' ]; then
+if [ "$os" = "Ubuntu" ]; then
   installers_arch_dir="ubuntu"
-elif [ "$os" == '"Arch Linux"' ]; then
+elif [ "$os" = "Arch Linux" ]; then
   installers_arch_dir="arch"
 else
   echo "Unsupported OS $os for automated install, please install manually"
