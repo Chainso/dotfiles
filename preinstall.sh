@@ -6,6 +6,7 @@ preinstall_dir="$preinstall_base_dir/$1"
 preinstall_candidates=(
   "pip"
   "stow"
+  "cargo"
 )
 
 for preinstall_candidate in "${preinstall_candidates[@]}"; do

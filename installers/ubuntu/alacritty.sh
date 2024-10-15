@@ -1,3 +1,4 @@
 #!/bin/sh
-sudo apt install -y alacritty
+
+cargo install alacritty
 
