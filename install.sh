@@ -15,6 +15,11 @@ fi
 # Preinstall necessary packages
 ./preinstall.sh "$installers_arch_dir"
 
+if [ $? -ne 0 ]; then
+  echo "Preinstall failed, exiting..."
+  exit 1
+fi
+
 # First add all of the dotfiles so existing config files can be found during installations
 make dotfiles
 
