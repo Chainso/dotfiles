@@ -1,7 +1,7 @@
 #!/bin/sh
 
-local os=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-local installers_base_dir="./installers"
+os=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+installers_base_dir="./installers"
 
 if [ "$os" = "Ubuntu" ]; then
   installers_arch_dir="ubuntu"
