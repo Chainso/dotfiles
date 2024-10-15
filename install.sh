@@ -12,7 +12,7 @@ else
   exit 1
 fi
 
-local installers_dir="$installers_base_dir/$installers_arch_dir"
+installers_dir="$installers_base_dir/$installers_arch_dir"
 
 to_install=(
   "alacritty"
