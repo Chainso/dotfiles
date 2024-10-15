@@ -1,4 +1,4 @@
 #!/bin/sh
 
-sudo apt install -y oxide
+sudo apt install -y zoxide
 
