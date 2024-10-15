@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# First add all of the dotfiles so existing config files can be found during installations
-make dotfiles
-
 os=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
 installers_base_dir="./installers"
 
@@ -14,6 +11,12 @@ else
   echo "Unsupported OS $os for automated install, please install manually"
   exit 1
 fi
+
+# Preinstall necessary packages
+./preinstall.sh "$installers_arch_dir"
+
+# First add all of the dotfiles so existing config files can be found during installations
+make dotfiles
 
 installers_dir="$installers_base_dir/$installers_arch_dir"
 
