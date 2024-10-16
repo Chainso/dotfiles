@@ -8,6 +8,7 @@ preinstall_candidates=(
   "stow"
   "cargo"
   "zsh"
+  "nvm"
 )
 
 for preinstall_candidate in "${preinstall_candidates[@]}"; do
