@@ -7,6 +7,7 @@ preinstall_candidates=(
   "pip"
   "stow"
   "cargo"
+  "zsh"
 )
 
 for preinstall_candidate in "${preinstall_candidates[@]}"; do
