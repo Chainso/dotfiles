@@ -4,7 +4,7 @@ if command -v "alacritty" >/dev/null; then
   continue
 fi
 
-sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 
 alacritty_install_dir="./alacritty_install"
 mkdir -p $alacritty_install_dir
