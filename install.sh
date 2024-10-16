@@ -24,6 +24,9 @@ fi
 # First add all of the dotfiles so existing config files can be found during installations
 make dotfiles
 
+# Source the new zshrc file
+source ~/.zshrc
+
 installers_dir="$installers_base_dir/$installers_arch_dir"
 
 to_install=(
