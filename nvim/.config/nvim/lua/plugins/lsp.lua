@@ -240,6 +240,31 @@ return {
       -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
       { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
     }
-  }
+  },
+
+  {
+    "nvimdev/lspsaga.nvim",
+    branch = "main",
+    event = "LspAttach",
+    dependencies = {
+        {"nvim-tree/nvim-web-devicons"},
+        {"nvim-treesitter/nvim-treesitter"}
+    },
+    config = function()
+      require("lspsaga").setup({})
+    end,
+  },
+
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   config = function()
+  --     require("lsp_signature").setup({
+  --       bind = true, -- This is mandatory, otherwise border config won't get registered.
+  --       handler_opts = {
+  --         border = "rounded"
+  --       }
+  --     })
+  --   end
+  -- },
 }
 

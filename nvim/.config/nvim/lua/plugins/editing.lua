@@ -30,7 +30,7 @@ return {
   "tpope/vim-abolish",
 
   -- Highlight under cursor
- {
+  {
     "RRethy/vim-illuminate",
     config = function()
       -- default configuration
@@ -84,35 +84,6 @@ return {
   },
 
   {
-    "nvimdev/lspsaga.nvim",
-    branch = "main",
-    event = "LspAttach",
-    dependencies = {
-        {"nvim-tree/nvim-web-devicons"},
-        {"nvim-treesitter/nvim-treesitter"}
-    },
-    config = function()
-      require("lspsaga").setup({
-        symbol_in_winbar = {
-          in_custom = true
-        }
-      })
-    end,
-  },
-
-  {
-    "ray-x/lsp_signature.nvim",
-    config = function()
-      require("lsp_signature").setup({
-        bind = true, -- This is mandatory, otherwise border config won't get registered.
-        handler_opts = {
-          border = "rounded"
-        }
-      })
-    end
-  },
-
-  {
     "smjonas/inc-rename.nvim",
     config = function()
       require("inc_rename").setup()
@@ -140,4 +111,3 @@ return {
     }
   }
 }
-
