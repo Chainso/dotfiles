@@ -58,7 +58,7 @@ return {
     config = function()
       require("flutter-tools").setup({
         debugger = {
-          enabled = true,
+          enabled = false,
         }
       })
     end
