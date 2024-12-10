@@ -1,22 +1,34 @@
-local codelldb_path = "/usr/bin/codelldb"
-local liblldb_path = "/usr/lib/liblldb.so"
+local bufnr = vim.api.nvim_get_current_buf()
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local rt = require("rust-tools")
-local rt_dap = require("rust-tools.dap")
+-- vim.g.rustaceanvim = function()
+--   local codelldb_path = "/usr/bin/codelldb"
+--   local liblldb_path = "/usr/lib/liblldb.so"
+--
+--   local rustacea_cfg = require("rustaceanvim.config")
+--   local capabilities = require("cmp_nvim_lsp").default_capabilities()
+--
+--   return {
+--     capabilities = capabilities,
+--     dap = {
+--       adapter = rustacea_cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+--     }
+--   }
+-- end
 
-rt.setup({
-  capabilities = capabilities,
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-Space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-    end
-  },
-  dap = rt_dap.get_codelldb_adapter(
-    codelldb_path,
-    liblldb_path
-  )
-})
+vim.keymap.set(
+  "n",
+  "<leader>a",
+  function()
+    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+    -- or vim.lsp.buf.codeAction() if you don't want grouping.
+  end,
+  { silent = true, buffer = bufnr }
+)
+vim.keymap.set(
+  "n",
+  "K", -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
+  function()
+    vim.cmd.RustLsp({ 'hover', 'actions' })
+  end,
+  { silent = true, buffer = bufnr }
+)

@@ -34,10 +34,15 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "nvim-java/nvim-java",
-      "simrat39/rust-tools.nvim",
       "folke/neoconf.nvim",
       "rcarriga/nvim-notify"
     }
+  },
+
+  -- Rust
+  {
+    "mrcjkb/rustaceanvim",
+    lazy = false
   },
 
   -- Golang
@@ -200,6 +205,9 @@ return {
             }
           }
         end,
+        -- Disable rust analyzer since we are using rustaceanvim
+        ["rust_analyzer"] = function()
+        end
       })
     end
   },
@@ -247,8 +255,8 @@ return {
     branch = "main",
     event = "LspAttach",
     dependencies = {
-        {"nvim-tree/nvim-web-devicons"},
-        {"nvim-treesitter/nvim-treesitter"}
+      { "nvim-tree/nvim-web-devicons" },
+      { "nvim-treesitter/nvim-treesitter" }
     },
     config = function()
       require("lspsaga").setup({})
@@ -267,4 +275,3 @@ return {
   --   end
   -- },
 }
-
