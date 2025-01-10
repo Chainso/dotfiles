@@ -188,3 +188,8 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 # Python
 export PATH="$PATH:/root/.local/bin"
+
+# Scala / Coursier
+export PATH="$PATH:$HOME/.local/share/coursier/bin"
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit ; compinit
