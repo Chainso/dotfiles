@@ -6,14 +6,22 @@ return {
       require("lualine").setup {
         options = {
           theme = "dracula-nvim"
+        },
+        sections = {
+          lualine_x = { "copilot", "encoding", "fileformat", "filetype" }, -- I added copilot here
+
         }
       }
     end
   },
 
   {
+    "AndreM222/copilot-lualine"
+  },
+
+  {
     "akinsho/bufferline.nvim",
-    dependencies = {"nvim-tree/nvim-web-devicons"},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("bufferline").setup()
     end
@@ -54,7 +62,7 @@ return {
     "rcarriga/nvim-notify",
     config = function()
       -- Snippet to use notify for regular prints
-      -- https://www.reddit.com/r/neovim/comments/xv3v68/tip_nvimnotify_can_be_used_to_display_print/ 
+      -- https://www.reddit.com/r/neovim/comments/xv3v68/tip_nvimnotify_can_be_used_to_display_print/
       -- Overriding vim.notify with fancy notify if fancy notify exists
       local notify = require("notify")
       vim.notify = notify
@@ -97,14 +105,13 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false, -- add a border to hover docs and signature help
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,       -- add a border to hover docs and signature help
         },
       })
     end
   }
 }
-

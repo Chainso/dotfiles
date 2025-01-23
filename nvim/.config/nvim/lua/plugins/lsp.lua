@@ -127,6 +127,7 @@ return {
           ["<TAB>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
+          { name = "copilot", group_index = 2 },
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
           { name = "luasnip" }, -- For luasnip users.
@@ -255,6 +256,13 @@ return {
 
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lua",
+
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  },
 
   "folke/neodev.nvim",
 
