@@ -82,6 +82,7 @@ plugins=(
 	git
 	zsh-autosuggestions
 	command-not-found
+	gradle-completion
 )
 
 source $ZSH/oh-my-zsh.sh
