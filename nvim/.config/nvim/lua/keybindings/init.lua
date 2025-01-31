@@ -99,7 +99,7 @@ r.nnoremap("<leader>rn", ":IncRename ")
 r.nnoremap("[e", "<CMD>Lspsaga diagnostic_jump_prev<CR>")
 r.nnoremap("]e", "<CMD>Lspsaga diagnostic_jump_next<CR>")
 r.nnoremap("<leader>cd", "<CMD>Lspsaga show_cursor_diagnostics<CR>")
-r.ienoremap("<M-Enter>", "copilot#Accept(\"<CR>\")")
+-- r.ienoremap("<M-Enter>", "copilot#Accept(\"<CR>\")")
 
 -- Source Control
 r.nnoremap("<leader>hs", "<CMD>Gitsigns stage_hunk<CR>")

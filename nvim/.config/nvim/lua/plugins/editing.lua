@@ -98,8 +98,24 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
-        suggestion = { enabled = false },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<M-Enter>",
+          }
+        },
         panel = { enabled = false },
+        filetypes = {
+          dapui_watches = false,
+          dapui_stacks = false,
+          dapui_breakpoints = false,
+          dapui_scopes = false,
+          dapui_console = false,
+          dapui_repl = false,
+          markdown = true,
+          yaml = true,
+        },
       })
     end,
   },
