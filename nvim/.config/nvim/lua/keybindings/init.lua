@@ -103,7 +103,9 @@ r.nnoremap("<leader>cd", "<CMD>Lspsaga show_cursor_diagnostics<CR>")
 
 -- Source Control
 r.nnoremap("<leader>hs", "<CMD>Gitsigns stage_hunk<CR>")
+r.vnoremap("<leader>hs", "<CMD>Gitsigns stage_hunk<CR>")
 r.nnoremap("<leader>hr", "<CMD>Gitsigns reset_hunk<CR>")
+r.vnoremap("<leader>hr", "<CMD>Gitsigns reset_hunk<CR>")
 r.nnoremap("<leader>dvo", "<CMD>DiffviewOpen<CR>")
 r.nnoremap("<leader>dvc", "<CMD>DiffviewClose<CR>")
 
