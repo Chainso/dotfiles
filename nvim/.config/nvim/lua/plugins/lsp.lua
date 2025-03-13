@@ -26,6 +26,9 @@ return {
       "rcarriga/nvim-notify"
     },
     config = function()
+      -- Java JDTLS JVM args for more performance
+      vim.env["JDTLS_JVM_ARGS"] =
+      "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m"
       require('java').setup()
     end
   },
