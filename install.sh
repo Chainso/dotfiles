@@ -40,6 +40,7 @@ to_install=(
   "ripgrep"
   "rofi"
   "zsh"
+  "fd"
 
   # Not explicitly config related but used
   "zoxide"
