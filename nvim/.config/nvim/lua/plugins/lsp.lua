@@ -43,6 +43,12 @@ return {
             cmd = { "./gradlew" },
             args = { "run", "--debug-jvm" },
             name = "Gradle Debug",
+            components = {
+              {
+                "custom.redirect_output",
+                bufnr = require("dapui").elements.console.buffer(),
+              }
+            }
           }
         end,
         -- Optional fields
