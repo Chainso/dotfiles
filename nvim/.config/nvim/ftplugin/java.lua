@@ -13,6 +13,8 @@ local function extend_dap_configurations()
         port = 5005,
         projectName = config.projectName,
         mainClass = config.mainClass,
+        -- Prelaunch task using Overseer
+        -- preLaunchTask = "Gradle Debug",
       }))
     end
   end

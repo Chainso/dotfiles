@@ -23,13 +23,33 @@ return {
   {
     "nvim-java/nvim-java",
     dependencies = {
-      "rcarriga/nvim-notify"
+      "rcarriga/nvim-notify",
+      "stevearc/overseer.nvim",
     },
     config = function()
       -- Java JDTLS JVM args for more performance
       vim.env["JDTLS_JVM_ARGS"] =
       "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m"
       require('java').setup()
+
+      local overseer = require("overseer")
+
+      -- Create task to debug a gradle project
+      overseer.register_template({
+        name = "Gradle Debug",
+        builder = function(params)
+          -- This must return an overseer.TaskDefinition
+          return {
+            cmd = { "./gradlew" },
+            args = { "run", "--debug-jvm" },
+            name = "Gradle Debug",
+          }
+        end,
+        -- Optional fields
+        desc = "Starts debugging for a Gradle project",
+        -- Tags can be used in overseer.run_template()
+        tags = { overseer.TAG.RUN },
+      })
     end
   },
 
