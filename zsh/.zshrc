@@ -194,3 +194,6 @@ export PATH="$PATH:/root/.local/bin"
 export PATH="$PATH:$HOME/.local/share/coursier/bin"
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit ; compinit
+
+# Java JDTLS
+export JDTLS_JVM_ARGS="-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m" 
