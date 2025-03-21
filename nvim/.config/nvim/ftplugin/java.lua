@@ -14,7 +14,7 @@ local function extend_dap_configurations()
         projectName = config.projectName,
         mainClass = config.mainClass,
         -- Prelaunch task using Overseer
-        -- preLaunchTask = "Gradle Debug",
+        preLaunchTask = "Gradle Debug",
       }))
     end
   end
