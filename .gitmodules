@@ -1,3 +1,9 @@
 [submodule "oh-my-zsh/.oh-my-zsh/plugins/gradle-completion"]
 	path = oh-my-zsh/.oh-my-zsh/plugins/gradle-completion
 	url = https://github.com/gradle/gradle-completion.git
+[submodule "oh-my-zsh/.oh-my-zsh/plugins/zsh-syntax-highlighting"]
+	path = oh-my-zsh/.oh-my-zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "oh-my-zsh/.oh-my-zsh/plugins/fast-syntax-highlighting"]
+	path = oh-my-zsh/.oh-my-zsh/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
