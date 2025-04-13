@@ -3,6 +3,8 @@
 preinstall_base_dir="./preinstallers"
 preinstall_dir="$preinstall_base_dir/$1"
 
+git submodule update --init --recursive
+
 preinstall_candidates=(
   "pip"
   "stow"
