@@ -121,54 +121,167 @@ return {
   },
 
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-    opts = {
-      -- add any opts here
-      provider = "copilot"
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion", "Avante" }
+  },
+
+  -- {
+  --   "yetone/avante.nvim",
+  --   event = "VeryLazy",
+  --   lazy = false,
+  --   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  --   build = "make",
+  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  --   dependencies = {
+  --     "stevearc/dressing.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     --- The below dependencies are optional,
+  --     "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+  --     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+  --     "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+  --     "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+  --     "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+  --     "zbirenbaum/copilot.lua",        -- for providers='copilot'
+  --     {
+  --       -- support for image pasting
+  --       "HakonHarnes/img-clip.nvim",
+  --       event = "VeryLazy",
+  --       opts = {
+  --         -- recommended settings
+  --         default = {
+  --           embed_image_as_base64 = false,
+  --           prompt_for_file_name = false,
+  --           drag_and_drop = {
+  --             insert_mode = true,
+  --           },
+  --           -- required for Windows users
+  --           use_absolute_path = true,
+  --         },
+  --       },
+  --     },
+  --     {
+  --       -- Make sure to set this up properly if you have lazy=true
+  --       'MeanderingProgrammer/render-markdown.nvim',
+  --       opts = {
+  --         file_types = { "markdown", "Avante" },
+  --       },
+  --       ft = { "markdown", "Avante" },
+  --     },
+  --   },
+  --   config = function()
+  --     require('avante').setup({
+  --     })
+  --   end,
+  -- },
+
+  {
+    "olimorris/codecompanion.nvim",
     dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua",        -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
+      "ravitemer/mcphub.nvim",
+      "Davidyz/VectorCode",
+      "echasnovski/mini.diff"
+    },
+    config = function()
+      local username = vim.fn.system("git config user.email | cut -d '@' -f 1"):gsub("\n", "")
+
+      require("codecompanion").setup({
+        display = {
+          diff = {
+            provider = "mini_diff",
+          },
+          chat = {
+            show_settings = true,
+            show_token_count = true,
+          }
+        },
+
+        strategies = {
+          chat = {
+            keymaps = {
+              close = {
+                modes = {
+                  n = "<C-o>",
+                  i = "<C-o>",
+                },
+              },
             },
-            -- required for Windows users
-            use_absolute_path = true,
+            tools = {
+              mcp = {
+                -- calling it in a function would prevent mcphub from being loaded before it's needed
+                callback = function() return require("mcphub.extensions.codecompanion") end,
+                description = "Call tools and resources from the MCP Servers",
+                opts = {
+                  requires_approval = true,
+                }
+              },
+              vectorcode = {
+                description = "Run VectorCode to retrieve the project context.",
+                callback = require("vectorcode.integrations").codecompanion.chat.make_tool(),
+              },
+            },
+            slash_commands = {
+              -- add the vectorcode command here.
+              codebase = require("vectorcode.integrations").codecompanion.chat.make_slash_command(),
+              file = {
+                callback = "strategies.chat.slash_commands.file",
+                description = "Insert a file",
+                opts = {
+                  contains_code = true,
+                  max_lines = 100000,
+                  provider = "fzf_lua" -- default|telescope|mini_pick|fzf_lua|snacks
+                },
+              }
+              ---
+            },
           },
         },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
+      })
+    end
+  },
+
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+
     },
+    -- cmd = "MCPHub", -- lazily start the hub when `MCPHub` is called
+    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+    config = function()
+      require("mcphub").setup({
+        -- Required options
+        port = 3000,                                                            -- Port for MCP Hub server
+        config = vim.fn.expand(vim.fn.stdpath("config") .. "/mcpservers.json"), -- Absolute path to config filejava.
+
+        -- Optional options
+        on_ready = function(hub)
+          -- Called when hub is ready
+        end,
+        on_error = function(err)
+          -- Called on errors
+        end,
+        log = {
+          level = vim.log.levels.WARN,
+          to_file = false,
+          file_path = nil,
+          prefix = "MCPHub"
+        },
+      })
+    end
+  },
+
+  {
+    "Davidyz/VectorCode",
+    version = "0.5.4",  -- optional, depending on whether you're on nightly or release
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "VectorCode", -- if you're lazy-loading VectorCode
+    config = function()
+      require("vectorcode").setup({
+        -- async_backend = "lsp",
+      })
+    end
   },
 
   "lambdalisue/suda.vim",

@@ -46,7 +46,7 @@ return {
 
   {
     "nvim-telescope/telescope-fzf-native.nvim",
-    dependencies = {"nvim-telescope/telescope.nvim"},
+    dependencies = { "nvim-telescope/telescope.nvim" },
     build = "make",
     config = function()
       require("telescope").load_extension("fzf")
@@ -54,7 +54,7 @@ return {
   },
 
   {
-    "nvim-telescope/telescope-live-grep-args.nvim" ,
+    "nvim-telescope/telescope-live-grep-args.nvim",
     dependencies = {
       "nvim-telescope/telescope.nvim",
     },
@@ -65,7 +65,7 @@ return {
 
   {
     "ThePrimeagen/harpoon",
-    dependencies = {"nvim-telescope/telescope.nvim"},
+    dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
       require("harpoon").setup {
         global_settings = {
@@ -78,8 +78,16 @@ return {
   },
 
   {
-    "junegunn/fzf",
-    build = ":call fzf#install()"
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    -- or if using mini.icons/mini.nvim
+    -- dependencies = { "echasnovski/mini.icons" },
+    opts = {
+      files = {
+        follow = true
+      }
+    }
   },
 
   {
@@ -89,11 +97,11 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
 
@@ -119,10 +127,9 @@ return {
   {
     "ziontee113/syntax-tree-surfer",
     config = function()
-      require("syntax-tree-surfer").setup { }
+      require("syntax-tree-surfer").setup {}
     end
   },
 
   "kevinhwang91/nvim-bqf",
 }
-

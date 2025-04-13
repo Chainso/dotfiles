@@ -12,7 +12,7 @@
 !dependencies.lock
 
 --glob
-!nodule_modules/*
+!node_modules/*
 
 --glob
 !package-lock.json

@@ -8,9 +8,30 @@ return {
           theme = "dracula-nvim"
         },
         sections = {
-          lualine_x = { "copilot", "encoding", "fileformat", "filetype" }, -- I added copilot here
-
-        }
+          lualine_x = {
+            "copilot",
+            require('mcphub.extensions.lualine'),
+            "encoding",
+            "fileformat",
+            "filetype"
+          },
+        },
+        -- tabline = {
+        --   lualine_y = {
+        --     {
+        --       function()
+        --         return require("vectorcode.integrations").lualine(opts)[1]()
+        --       end,
+        --       cond = function()
+        --         if package.loaded["vectorcode"] == nil then
+        --           return false
+        --         else
+        --           return require("vectorcode.integrations").lualine(opts).cond()
+        --         end
+        --       end,
+        --     },
+        --   }
+        -- }
       }
     end
   },

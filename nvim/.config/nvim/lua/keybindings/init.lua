@@ -109,3 +109,7 @@ r.vnoremap("<leader>hr", "<CMD>Gitsigns reset_hunk<CR>")
 r.nnoremap("<leader>dvo", "<CMD>DiffviewOpen<CR>")
 r.nnoremap("<leader>dvc", "<CMD>DiffviewClose<CR>")
 
+-- Editing
+r.nnoremap("<leader>aa", "<CMD>CodeCompanionChat<CR>")
+r.nnoremap("<leader>ae", "<CMD>CodeCompanion<CR>")
+r.nnoremap("<leader>ad", "<CMD>CodeCompanionActions<CR>")

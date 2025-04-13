@@ -81,6 +81,8 @@ HIST_STAMPS="%F %l:%M:%S %p"
 plugins=(
 	git
 	zsh-autosuggestions
+	zsh-syntax-highlighting
+	fast-syntax-highlighting
 	command-not-found
 	gradle-completion
 )

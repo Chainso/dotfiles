@@ -30,6 +30,9 @@ function gdd() {
   nvim -c "DiffviewOpen $1"
 }
 
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
+
 # Python
 penv() {
   source .venv/bin/activate
@@ -42,3 +45,14 @@ penvm() {
 
 # Java
 alias gw="./gradlew"
+
+
+# Neovim
+function nvim-java-cc() {
+  local projectdir=$(pwd)
+  localdir="${projectdir//\//_}"
+  localdir="${localdir//-/_}"
+  cache_dir="$HOME/.cache/nvim/jdtls/workspaces/$localdir"
+  echo "Clearing cache for project $projectdir: removing $cache_dir"
+  rm -r $cache_dir
+}
