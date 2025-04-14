@@ -180,7 +180,7 @@ return {
     "olimorris/codecompanion.nvim",
     dependencies = {
       "ravitemer/mcphub.nvim",
-      "Davidyz/VectorCode",
+      -- "Davidyz/VectorCode",
       "echasnovski/mini.diff"
     },
     config = function()
@@ -216,14 +216,14 @@ return {
                   requires_approval = true,
                 }
               },
-              vectorcode = {
-                description = "Run VectorCode to retrieve the project context.",
-                callback = require("vectorcode.integrations").codecompanion.chat.make_tool(),
-              },
+              -- vectorcode = {
+              --   description = "Run VectorCode to retrieve the project context.",
+              --   callback = require("vectorcode.integrations").codecompanion.chat.make_tool(),
+              -- },
             },
             slash_commands = {
               -- add the vectorcode command here.
-              codebase = require("vectorcode.integrations").codecompanion.chat.make_slash_command(),
+              -- codebase = require("vectorcode.integrations").codecompanion.chat.make_slash_command(),
               file = {
                 callback = "strategies.chat.slash_commands.file",
                 description = "Insert a file",
@@ -237,6 +237,18 @@ return {
             },
           },
         },
+
+        adapters = {
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              schema = {
+                model = {
+                  default = "claude-3.7-sonnet"
+                }
+              }
+            })
+          end,
+        }
       })
     end
   },
@@ -272,17 +284,17 @@ return {
     end
   },
 
-  {
-    "Davidyz/VectorCode",
-    version = "0.5.4",  -- optional, depending on whether you're on nightly or release
-    dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = "VectorCode", -- if you're lazy-loading VectorCode
-    config = function()
-      require("vectorcode").setup({
-        -- async_backend = "lsp",
-      })
-    end
-  },
+  -- {
+  --   "Davidyz/VectorCode",
+  --   version = "0.5.4",  -- optional, depending on whether you're on nightly or release
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   cmd = "VectorCode", -- if you're lazy-loading VectorCode
+  --   config = function()
+  --     require("vectorcode").setup({
+  --       -- async_backend = "lsp",
+  --     })
+  --   end
+  -- },
 
   "lambdalisue/suda.vim",
 
