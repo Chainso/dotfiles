@@ -71,8 +71,8 @@ r.xnoremap("<A-k>", "<cmd>STSSwapNextVisual<cr>")
 
 -- Terminal
 r.tnoremap("<ESC>", "<C-\\><C-n>")
-r.nnoremap("<leader>tj", "1<CMD>ToggleTerm direction=vertical<CR>")
-r.nnoremap("<leader>tk", "2<CMD>ToggleTerm direction=horizontal<CR>")
+r.nnoremap([[<C-\>]], [[<CMD>exe v:count1 . "ToggleTerm direction=vertical"<CR>]])
+r.nnoremap([[<C-;>]], [[<CMD>exe (v:count == 0 ? 2 : v:count) . "ToggleTerm direction=float"<CR>]])
 
 -- Debugging
 r.nnoremap("<leader>dbui", "<CMD>DapUiToggle<CR>")
