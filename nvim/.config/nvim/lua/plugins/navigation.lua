@@ -83,11 +83,17 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     -- or if using mini.icons/mini.nvim
     -- dependencies = { "echasnovski/mini.icons" },
-    opts = {
-      files = {
-        follow = true
+    config = function()
+      local fzf_lua = require("fzf-lua")
+
+      fzf_lua.setup {
+        files = {
+          follow = true
+        }
       }
-    }
+
+      fzf_lua.register_ui_select()
+    end
   },
 
   {
