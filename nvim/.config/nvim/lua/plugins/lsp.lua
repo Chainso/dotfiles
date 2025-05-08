@@ -236,21 +236,12 @@ return {
       'rafamadriz/friendly-snippets',
       'Kaiser-Yang/blink-cmp-git',
     },
-    keymap = {
-
-    },
-    providers = {
-      git = {
-        module = 'blink-cmp-git',
-        name = 'Git',
-        opts = {
-          -- options for the blink-cmp-git
-        },
-      },
-    },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+      keymap = {
+        ['<Tab>'] = { 'select_and_accept' }
+      },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'git', 'lazydev' },
         providers = {
