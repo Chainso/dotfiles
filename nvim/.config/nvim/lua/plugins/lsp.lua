@@ -121,6 +121,20 @@ return {
     end
   },
 
+  -- LuaLS config for neovim
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        "lazy.nvim",
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
   -- JSON/YAML schemas
   "b0o/schemastore.nvim",
 
@@ -149,26 +163,6 @@ return {
       })
 
       local lsp_settings = {
-        ["lua_ls"] = {
-          settings = {
-            Lua = {
-              runtime = {
-                version = "LuaJIT",
-              },
-              diagnostics = {
-                globals = {
-                  "vim"
-                }
-              },
-              workspace = {
-                library = vim.api.nvim_get_runtime_file("", true)
-              },
-              telemetry = {
-                enable = false
-              }
-            }
-          }
-        },
         ["jsonls"] = {
           settings = {
             json = {
@@ -200,8 +194,6 @@ return {
     end
 
   },
-
-  "folke/neodev.nvim",
 
   {
     "linux-cultist/venv-selector.nvim",
@@ -238,10 +230,14 @@ return {
 
   {
     'saghen/blink.cmp',
+    version = "*",
     -- optional: provides snippets for the snippet source
     dependencies = {
       'rafamadriz/friendly-snippets',
       'Kaiser-Yang/blink-cmp-git',
+    },
+    keymap = {
+
     },
     providers = {
       git = {
@@ -256,7 +252,7 @@ return {
     ---@type blink.cmp.Config
     opts = {
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'git' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'git', 'lazydev' },
         providers = {
           git = {
             module = 'blink-cmp-git',
@@ -264,6 +260,12 @@ return {
             opts = {
               -- options for the blink-cmp-git
             },
+          },
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            score_offset = 100,
           },
         }
       }
