@@ -13,11 +13,6 @@ return {
 
   {
     "folke/neoconf.nvim",
-    config = function()
-      require("neoconf").setup({
-        -- override any of the default settings here
-      })
-    end
   },
 
   {
@@ -137,190 +132,74 @@ return {
       "folke/neoconf.nvim",
     },
     config = function()
-      local cmp = require("cmp")
-
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-          end,
-        },
-        window = {
-          -- completion = cmp.config.window.bordered(),
-          -- documentation = cmp.config.window.bordered(),
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<TAB>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        }),
-        sources = cmp.config.sources({
-          -- { name = "copilot", group_index = 2 },
-          { name = "nvim_lsp" },
-          { name = "nvim_lua" },
-          { name = "luasnip" }, -- For luasnip users.
-          { name = "buffer" }
-        })
-      })
-
-      -- Set configuration for specific filetype.
-      cmp.setup.filetype("gitcommit", {
-        sources = cmp.config.sources({
-          { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
-        }, {
-          { name = "buffer" },
-        })
-      })
-
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won"t work anymore).
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = "buffer" }
-        }
-      })
-
-      -- Use cmdline & path source for ":" (if you enabled `native_menu`, this won"t work anymore).
-      cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = "path" }
-        }, {
-          { name = "cmdline" }
-        })
-      })
-
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
       require("neoconf").setup({
         -- override any of the default settings here
       })
 
       local mason_lspconfig = require("mason-lspconfig")
-      mason_lspconfig.setup({})
+      mason_lspconfig.setup({
+        automatic_enable = {
+          exclude = {
+            -- Using rustaceanvim
+            "rust_analyzer",
+            -- Using nvim-java
+            "jdtls"
+          }
+        }
+      })
 
-      local lspconfig = require("lspconfig")
-
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-            -- TODO: find out if needed after semantic tokens is merged upstream with neovim
-            -- on_attach = function(client, bufnr)
-            --   local caps = client.server_capabilities
-            --   if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-            --     local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
-            --     vim.api.nvim_create_autocmd("TextChanged", {
-            --       group = augroup,
-            --       buffer = bufnr,
-            --       callback = function()
-            --         vim.lsp.buf.semantic_tokens_full()
-            --       end,
-            --     })
-            --     -- fire it first time on load as well
-            --     vim.lsp.buf.semantic_tokens_full()
-            --   end
-            -- end
-          })
-        end,
-        ["lua_ls"] = function()
-          require("lspconfig").lua_ls.setup {
-            capabilities = capabilities,
-            -- TODO: find out if needed after semantic tokens is merged upstream with neovim
-            -- on_attach = function(client, bufnr)
-            --   local caps = client.server_capabilities
-            --   if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-            --     local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
-            --     vim.api.nvim_create_autocmd("TextChanged", {
-            --       group = augroup,
-            --       buffer = bufnr,
-            --       callback = function()
-            --         vim.lsp.buf.semantic_tokens_full()
-            --       end,
-            --     })
-            --     -- fire it first time on load as well
-            --     vim.lsp.buf.semantic_tokens_full()
-            --   end
-            -- end,
-            settings = {
-              Lua = {
-                runtime = {
-                  version = "LuaJIT",
-                },
-                diagnostics = {
-                  globals = {
-                    "vim"
-                  }
-                },
-                workspace = {
-                  library = vim.api.nvim_get_runtime_file("", true)
-                },
-                telemetry = {
-                  enable = false
+      local lsp_settings = {
+        ["lua_ls"] = {
+          settings = {
+            Lua = {
+              runtime = {
+                version = "LuaJIT",
+              },
+              diagnostics = {
+                globals = {
+                  "vim"
                 }
+              },
+              workspace = {
+                library = vim.api.nvim_get_runtime_file("", true)
+              },
+              telemetry = {
+                enable = false
               }
             }
           }
-        end,
-        -- Disable rust analyzer since we are using rustaceanvim
-        ["rust_analyzer"] = function()
-        end,
-        ["jsonls"] = function()
-          require('lspconfig').jsonls.setup {
-            settings = {
-              json = {
-                schemas = require('schemastore').json.schemas(),
-                validate = { enable = true },
-              },
+        },
+        ["jsonls"] = {
+          settings = {
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
             },
-          }
-        end,
-        ["yamlls"] = function()
-          require('lspconfig').yamlls.setup {
-            settings = {
-              yaml = {
-                schemaStore = {
-                  -- You must disable built-in schemaStore support if you want to use
-                  -- this plugin and its advanced options like `ignore`.
-                  enable = false,
-                  -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-                  url = "",
-                },
-                schemas = require('schemastore').yaml.schemas(),
+          },
+        },
+        ["yamlls"] = {
+          settings = {
+            yaml = {
+              schemaStore = {
+                -- You must disable built-in schemaStore support if you want to use
+                -- this plugin and its advanced options like `ignore`.
+                enable = false,
+                -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                url = "",
               },
+              schemas = require('schemastore').yaml.schemas(),
             },
-          }
-        end
-      })
+          },
+        }
+      }
+
+      for server, settings in pairs(lsp_settings) do
+        vim.lsp.config(server, settings)
+        vim.lsp.enable(server)
+      end
     end
+
   },
-
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
-  "petertriho/cmp-git",
-  "hrsh7th/nvim-cmp",
-
-  {
-    "L3MON4D3/LuaSnip",
-    -- install jsregexp (optional!).
-    build = "make install_jsregexp"
-  },
-
-  "saadparwaiz1/cmp_luasnip",
-  "hrsh7th/cmp-nvim-lua",
-
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   config = function()
-  --     require("copilot_cmp").setup()
-  --   end
-  -- },
 
   "folke/neodev.nvim",
 
@@ -356,6 +235,43 @@ return {
       require("lspsaga").setup({})
     end,
   },
+
+  {
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      'Kaiser-Yang/blink-cmp-git',
+    },
+    providers = {
+      git = {
+        module = 'blink-cmp-git',
+        name = 'Git',
+        opts = {
+          -- options for the blink-cmp-git
+        },
+      },
+    },
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'git' },
+        providers = {
+          git = {
+            module = 'blink-cmp-git',
+            name = 'Git',
+            opts = {
+              -- options for the blink-cmp-git
+            },
+          },
+        }
+      }
+    },
+    opts_extend = {
+      "sources.default"
+    }
+  }
 
   -- {
   --   "ray-x/lsp_signature.nvim",

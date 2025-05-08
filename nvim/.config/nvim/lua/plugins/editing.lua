@@ -122,7 +122,19 @@ return {
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion", "Avante" }
+    ft = { "markdown", "codecompanion", "Avante" },
+    config = function()
+      require("render-markdown").setup({
+        completions = {
+          lsp = {
+            enabled = true,
+          },
+          blink = {
+            enabled = true,
+          }
+        }
+      })
+    end
   },
 
   -- {
