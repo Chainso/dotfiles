@@ -248,6 +248,10 @@ return {
               },
             },
             tools = {
+              opts = {
+                auto_submit_success = true,
+                auto_submit_errors = true,
+              },
               -- vectorcode = {
               --   description = "Run VectorCode to retrieve the project context.",
               --   callback = require("vectorcode.integrations").codecompanion.chat.make_tool(),
