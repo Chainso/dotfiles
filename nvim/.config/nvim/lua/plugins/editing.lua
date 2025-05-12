@@ -232,7 +232,8 @@ return {
             provider = "mini_diff",
           },
           chat = {
-            show_settings = true,
+            -- Needed to be able to switch model
+            show_settings = false,
             show_token_count = true,
           }
         },
