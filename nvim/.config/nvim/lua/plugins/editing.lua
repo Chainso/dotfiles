@@ -193,7 +193,6 @@ return {
     dependencies = {
       "ravitemer/mcphub.nvim",
       "ravitemer/codecompanion-history.nvim",
-      -- "Davidyz/VectorCode",
       "echasnovski/mini.diff"
     },
     config = function()
@@ -253,14 +252,8 @@ return {
                 auto_submit_success = true,
                 auto_submit_errors = true,
               },
-              -- vectorcode = {
-              --   description = "Run VectorCode to retrieve the project context.",
-              --   callback = require("vectorcode.integrations").codecompanion.chat.make_tool(),
-              -- },
             },
             slash_commands = {
-              -- add the vectorcode command here.
-              -- codebase = require("vectorcode.integrations").codecompanion.chat.make_slash_command(),
               file = {
                 callback = "strategies.chat.slash_commands.file",
                 description = "Insert a file",
@@ -320,18 +313,6 @@ return {
       })
     end
   },
-
-  -- {
-  --   "Davidyz/VectorCode",
-  --   version = "0.5.4",  -- optional, depending on whether you're on nightly or release
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  --   cmd = "VectorCode", -- if you're lazy-loading VectorCode
-  --   config = function()
-  --     require("vectorcode").setup({
-  --       -- async_backend = "lsp",
-  --     })
-  --   end
-  -- },
 
   "lambdalisue/suda.vim",
 
