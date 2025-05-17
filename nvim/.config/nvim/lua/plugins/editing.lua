@@ -273,7 +273,10 @@ return {
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
                 model = {
-                  default = "claude-3.7-sonnet"
+                  default = "claude-3.7-sonnet",
+                },
+                max_tokens = {
+                  default = 64000,
                 }
               }
             })
