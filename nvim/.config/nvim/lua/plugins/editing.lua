@@ -239,6 +239,7 @@ return {
 
         strategies = {
           chat = {
+            adapter = "gemini",
             keymaps = {
               close = {
                 modes = {
@@ -269,6 +270,13 @@ return {
         },
 
         adapters = {
+          gemini = function()
+            return require("codecompanion.adapters").extend("gemini", {
+              env = {
+                api_key = "cmd: secret-tool lookup service api domain aistudio.google.com"
+              }
+            })
+          end,
           copilot = function()
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
