@@ -1,6 +1,9 @@
 # Hidden files
 --hidden
 
+# Follow symlinks
+-L
+
 # Exclusions
 --glob
 !.git/*
