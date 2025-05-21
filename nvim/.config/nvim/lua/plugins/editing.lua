@@ -121,20 +121,17 @@ return {
   },
 
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion", "Avante" },
-    config = function()
-      require("render-markdown").setup({
-        completions = {
-          lsp = {
-            enabled = true,
-          },
-          blink = {
-            enabled = true,
-          }
-        }
-      })
-    end
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    dependencies = {
+        "saghen/blink.cmp"
+    },
+    opts = {
+      preview = {
+        filetypes = { "markdown", "codecompanion", "Avante" },
+        ignore_buftypes = {},
+      },
+    },
   },
 
   -- {
