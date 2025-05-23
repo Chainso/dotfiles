@@ -148,18 +148,6 @@ return {
         -- override any of the default settings here
       })
 
-      local mason_lspconfig = require("mason-lspconfig")
-      mason_lspconfig.setup({
-        automatic_enable = {
-          exclude = {
-            -- Using rustaceanvim
-            "rust_analyzer",
-            -- Using nvim-java
-            "jdtls"
-          }
-        }
-      })
-
       local lsp_settings = {
         ["jsonls"] = {
           settings = {
@@ -184,6 +172,19 @@ return {
           },
         }
       }
+
+      local mason_lspconfig = require("mason-lspconfig")
+      mason_lspconfig.setup({
+        ensure_installed = vim.tbl_keys(lsp_settings),
+        automatic_enable = {
+          exclude = {
+            -- Using rustaceanvim
+            "rust_analyzer",
+            -- Using nvim-java
+            "jdtls"
+          }
+        }
+      })
 
       for server, settings in pairs(lsp_settings) do
         vim.lsp.config(server, settings)
