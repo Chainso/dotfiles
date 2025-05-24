@@ -14,6 +14,13 @@ return {
   },
 
   {
+    "kiyoon/jupynium.nvim",
+    -- build = "pip3 install --user .",
+    build = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python",
+    -- build = "conda run --no-capture-output -n jupynium pip install .",
+  },
+
+  {
     "nvim-java/nvim-java",
     dependencies = {
       "rcarriga/nvim-notify",
@@ -242,7 +249,7 @@ return {
         ['<Tab>'] = { 'select_and_accept' }
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'git', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'git', 'lazydev', 'jupynium' },
         providers = {
           git = {
             module = 'blink-cmp-git',
@@ -257,6 +264,12 @@ return {
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
           },
+          jupynium = {
+            name = "Jupynium",
+            module = "jupynium.blink_cmp",
+            -- Consider higher priority than LSP
+            score_offset = 100,
+          }
         }
       }
     },
