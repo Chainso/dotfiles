@@ -249,12 +249,19 @@ return {
       keymap = {
         ['<Tab>'] = { 'show_and_insert', 'select_next' }
       },
+      signature = {
+        enabled = true,
+      },
       completion = {
         list = {
           selection = {
             preselect = false,
             auto_insert = true,
           }
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 0,
         },
         menu = {
           auto_show = true,
@@ -303,7 +310,15 @@ return {
                   end
                   return hl
                 end,
-              }
+              },
+              label = {
+                text = function(ctx)
+                  return require("colorful-menu").blink_components_text(ctx)
+                end,
+                highlight = function(ctx)
+                  return require("colorful-menu").blink_components_highlight(ctx)
+                end,
+              },
             }
           }
         },
