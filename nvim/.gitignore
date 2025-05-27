@@ -5,3 +5,6 @@
 .luarc.json
 .jdtls
 
+# MCP
+.config/nvim/mcpservers.json
+
