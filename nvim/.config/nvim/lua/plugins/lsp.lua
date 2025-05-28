@@ -1,12 +1,15 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = {
-      registries = {
-        'github:nvim-java/mason-registry',
-        'github:mason-org/mason-registry',
-      },
-    }
+    version = "^1.0.0",
+    config = function()
+      require("mason").setup({
+        registries = {
+          'github:nvim-java/mason-registry',
+          'github:mason-org/mason-registry',
+        },
+      })
+    end
   },
 
   {
@@ -30,7 +33,9 @@ return {
       -- Java JDTLS JVM args for more performance
       vim.env["JDTLS_JVM_ARGS"] =
       "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m"
-      require('java').setup()
+      require('java').setup({
+        auto_install = false,
+      })
 
       local overseer = require("overseer")
 
@@ -71,6 +76,7 @@ return {
   -- Rust
   {
     "mrcjkb/rustaceanvim",
+    version = '^5', -- Until we can move to nvim 0.11 vim.lsp.config
     lazy = false
   },
 
@@ -145,8 +151,9 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
+    version = "^1.0.0",
     dependencies = {
-      "williamboman/mason.nvim",
+      { "williamboman/mason.nvim", version = "^1.0.0" },
       "neovim/nvim-lspconfig",
       "folke/neoconf.nvim",
     },
@@ -155,50 +162,57 @@ return {
         -- override any of the default settings here
       })
 
-      local lsp_settings = {
-        ["jsonls"] = {
-          settings = {
-            json = {
-              schemas = require('schemastore').json.schemas(),
-              validate = { enable = true },
-            },
-          },
-        },
-        ["yamlls"] = {
-          settings = {
-            yaml = {
-              schemaStore = {
-                -- You must disable built-in schemaStore support if you want to use
-                -- this plugin and its advanced options like `ignore`.
-                enable = false,
-                -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-                url = "",
-              },
-              schemas = require('schemastore').yaml.schemas(),
-            },
-          },
-        }
-      }
+      local lspconfig = require("lspconfig")
+      local blink = require("blink.cmp")
 
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
-        ensure_installed = vim.tbl_keys(lsp_settings),
-        automatic_enable = {
-          exclude = {
-            -- Using rustaceanvim
-            "rust_analyzer",
-            -- Using nvim-java
-            "jdtls"
-          }
+        ensure_installed = {
+          "jsonls",
+          "yamlls",
+          "bashls",
+          "marksman",
+          "vimls"
+        },
+        handlers = {
+          function(server_name)
+            lspconfig[server_name].setup({
+              capabilities = blink.get_lsp_capabilities(capabilities),
+            })
+          end,
+          jsonls = function()
+            lspconfig.jsonls.setup {
+              capabilities = blink.get_lsp_capabilities(capabilities),
+              settings = {
+                json = {
+                  schemas = require('schemastore').json.schemas(),
+                  validate = { enable = true },
+                },
+              },
+            }
+          end,
+          yamlls = function()
+            lspconfig.yamlls.setup {
+              capabilities = blink.get_lsp_capabilities(capabilities),
+              settings = {
+                yaml = {
+                  schemaStore = {
+                    -- You must disable built-in schemaStore support if you want to use
+                    -- this plugin and its advanced options like `ignore`.
+                    enable = false,
+                    -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                    url = "",
+                  },
+                  schemas = require('schemastore').yaml.schemas(),
+                },
+              },
+            }
+          end,
+          rust_analyzer = function()
+          end
         }
       })
-
-      for server, settings in pairs(lsp_settings) do
-        vim.lsp.config(server, settings)
-        vim.lsp.enable(server)
-      end
     end
-
   },
 
   {
