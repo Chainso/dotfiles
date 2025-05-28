@@ -261,7 +261,9 @@ return {
     ---@type blink.cmp.Config
     opts = {
       keymap = {
-        ['<Tab>'] = { 'show_and_insert', 'select_next' }
+        ['<Tab>'] = { 'select_and_accept', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+        ['<C-k>'] = { 'select_prev', 'fallback' },
       },
       signature = {
         enabled = true,
