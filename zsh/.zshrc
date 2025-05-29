@@ -87,6 +87,10 @@ plugins=(
 	gradle-completion
 )
 
+# Load completions, doesn't load like a normal plugin to improve startup time
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -194,5 +198,3 @@ export PATH="$PATH:/root/.local/bin"
 
 # Scala / Coursier
 export PATH="$PATH:$HOME/.local/share/coursier/bin"
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit ; compinit
