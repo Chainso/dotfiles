@@ -124,7 +124,7 @@ return {
     "OXY2DEV/markview.nvim",
     lazy = false,
     dependencies = {
-        "saghen/blink.cmp"
+      "saghen/blink.cmp"
     },
     opts = {
       preview = {
@@ -317,6 +317,14 @@ return {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
+    }
+  },
+
+  {
+    "3rd/image.nvim",
+    build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+    opts = {
+      processor = "magick_cli",
     }
   }
 }
