@@ -139,4 +139,12 @@ return {
   },
 
   "kevinhwang91/nvim-bqf",
+
+  -- Suffering
+  {
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {},
+  },
 }
