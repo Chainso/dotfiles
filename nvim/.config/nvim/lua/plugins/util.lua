@@ -8,6 +8,20 @@ return {
     build = function() vim.fn["mkdp#util#install"]() end,
   },
 
+  -- Markdown
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+      require("peek").setup({
+        app = "browser"
+      })
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
+  },
+
   {
     "amitds1997/remote-nvim.nvim",
     version = "*",                     -- Pin to GitHub releases
