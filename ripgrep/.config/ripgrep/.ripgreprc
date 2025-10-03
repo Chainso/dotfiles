@@ -36,3 +36,5 @@
 --line-number
 --column
 
+# Color
+--color=auto
