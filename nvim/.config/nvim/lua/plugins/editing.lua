@@ -334,6 +334,8 @@ return {
       "3rd/image.nvim",
     },
     config = function()
+      local puppeteer_config = vim.fn.expand(vim.fn.stdpath("config") .. "/mmdc-puppeteer-config.json")
+
       require("diagram").setup({
         integrations = {
           require("diagram.integrations.markdown"),
@@ -341,7 +343,9 @@ return {
         },
         renderer_options = {
           mermaid = {
-            theme = "forest",
+            cli_args = {
+              "-p", puppeteer_config,
+            },
           },
           plantuml = {
             charset = "utf-8",
