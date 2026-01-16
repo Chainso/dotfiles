@@ -127,6 +127,9 @@ fi
 export PATH=$PATH:/usr/local/cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
 
+export PATH=$PATH:/opt/cuda/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib
+
 # Add Mujoco paths
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin
 
@@ -164,6 +167,7 @@ export VISUAL="${EDITOR}"
 
 # Android development
 export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:/opt/flutter/bin"
 export CHROME_EXECUTABLE="google-chrome-stable"
@@ -198,3 +202,13 @@ export PATH="$PATH:/root/.local/bin"
 
 # Scala / Coursier
 export PATH="$PATH:$HOME/.local/share/coursier/bin"
+
+# bun completions
+[ -s "/home/chanzo/.bun/_bun" ] && source "/home/chanzo/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Ruby Env
+eval "$(rbenv init - --no-rehash zsh)"
