@@ -78,6 +78,7 @@ HIST_STAMPS="%F %l:%M:%S %p"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+export NVM_LAZY_LOAD=true
 plugins=(
 	git
 	zsh-autosuggestions
@@ -85,6 +86,7 @@ plugins=(
 	fast-syntax-highlighting
 	command-not-found
 	gradle-completion
+	zsh-nvm
 )
 
 # Load completions, doesn't load like a normal plugin to improve startup time
@@ -176,7 +178,6 @@ export CHROME_EXECUTABLE="google-chrome-stable"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/nvm/init-nvm.sh
 
 neofetch
 
