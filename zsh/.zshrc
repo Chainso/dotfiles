@@ -78,7 +78,6 @@ HIST_STAMPS="%F %l:%M:%S %p"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-export NVM_LAZY_LOAD=true
 plugins=(
 	git
 	zsh-autosuggestions
@@ -86,14 +85,14 @@ plugins=(
 	fast-syntax-highlighting
 	command-not-found
 	gradle-completion
-	zsh-nvm
+	zsh-defer
 )
 
 # Load completions, doesn't load like a normal plugin to improve startup time
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
+[[ -r /usr/share/nvm/init-nvm.sh ]] && zsh-defer source /usr/share/nvm/init-nvm.sh
 
 # User configuration
 source ~/.config/zsh/aliases.sh
