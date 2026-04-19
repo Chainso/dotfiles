@@ -185,126 +185,126 @@ return {
   --   end,
   -- },
 
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      "ravitemer/mcphub.nvim",
-      "ravitemer/codecompanion-history.nvim",
-      "echasnovski/mini.diff"
-    },
-    config = function()
-      require("codecompanion").setup({
-        extensions = {
-          history = {
-            enabled = true,
-            opts = {
-              -- Keymap to open history from chat buffer (default: gh)
-              keymap = "gh",
-              -- Automatically generate titles for new chats
-              auto_generate_title = true,
-              ---On exiting and entering neovim, loads the last chat on opening chat
-              continue_last_chat = false,
-              ---When chat is cleared with `gx` delete the chat from history
-              delete_on_clearing_chat = false,
-              -- Picker interface ("telescope", "snacks" or "default")
-              picker = "telescope",
-              ---Enable detailed logging for history extension
-              enable_logging = false,
-              ---Directory path to save the chats
-              dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
-            }
-          },
-          mcphub = {
-            callback = "mcphub.extensions.codecompanion",
-            opts = {
-              make_vars = true,
-              make_slash_commands = true,
-              show_result_in_chat = true,
-            }
-          }
-        },
-        display = {
-          diff = {
-            provider = "mini_diff",
-          },
-          chat = {
-            -- Needed to be able to switch model
-            show_settings = false,
-            show_token_count = true,
-          }
-        },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   dependencies = {
+  --     "ravitemer/mcphub.nvim",
+  --     "ravitemer/codecompanion-history.nvim",
+  --     "echasnovski/mini.diff"
+  --   },
+  --   config = function()
+  --     require("codecompanion").setup({
+  --       extensions = {
+  --         history = {
+  --           enabled = true,
+  --           opts = {
+  --             -- Keymap to open history from chat buffer (default: gh)
+  --             keymap = "gh",
+  --             -- Automatically generate titles for new chats
+  --             auto_generate_title = true,
+  --             ---On exiting and entering neovim, loads the last chat on opening chat
+  --             continue_last_chat = false,
+  --             ---When chat is cleared with `gx` delete the chat from history
+  --             delete_on_clearing_chat = false,
+  --             -- Picker interface ("telescope", "snacks" or "default")
+  --             picker = "telescope",
+  --             ---Enable detailed logging for history extension
+  --             enable_logging = false,
+  --             ---Directory path to save the chats
+  --             dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+  --           }
+  --         },
+  --         mcphub = {
+  --           callback = "mcphub.extensions.codecompanion",
+  --           opts = {
+  --             make_vars = true,
+  --             make_slash_commands = true,
+  --             show_result_in_chat = true,
+  --           }
+  --         }
+  --       },
+  --       display = {
+  --         diff = {
+  --           provider = "mini_diff",
+  --         },
+  --         chat = {
+  --           -- Needed to be able to switch model
+  --           show_settings = false,
+  --           show_token_count = true,
+  --         }
+  --       },
+  --
+  --       strategies = {
+  --         chat = {
+  --           adapter = "gemini",
+  --           keymaps = {
+  --             close = {
+  --               modes = {
+  --                 n = "<C-o>",
+  --                 i = "<C-o>",
+  --               },
+  --             },
+  --           },
+  --           tools = {
+  --             opts = {
+  --               auto_submit_success = true,
+  --               auto_submit_errors = true,
+  --             },
+  --           },
+  --           slash_commands = {
+  --             file = {
+  --               callback = "strategies.chat.slash_commands.file",
+  --               description = "Insert a file",
+  --               opts = {
+  --                 contains_code = true,
+  --                 max_lines = 100000,
+  --                 provider = "fzf_lua" -- default|telescope|mini_pick|fzf_lua|snacks
+  --               },
+  --             }
+  --             ---
+  --           },
+  --         },
+  --       },
+  --
+  --       adapters = {
+  --         gemini = function()
+  --           return require("codecompanion.adapters").extend("gemini", {
+  --             env = {
+  --               api_key = "cmd: secret-tool lookup service api domain aistudio.google.com"
+  --             }
+  --           })
+  --         end,
+  --         copilot = function()
+  --           return require("codecompanion.adapters").extend("copilot", {
+  --             schema = {
+  --               model = {
+  --                 default = "claude-3.7-sonnet",
+  --               },
+  --               max_tokens = {
+  --                 default = 64000,
+  --               }
+  --             }
+  --           })
+  --         end,
+  --       }
+  --     })
+  --   end
+  -- },
 
-        strategies = {
-          chat = {
-            adapter = "gemini",
-            keymaps = {
-              close = {
-                modes = {
-                  n = "<C-o>",
-                  i = "<C-o>",
-                },
-              },
-            },
-            tools = {
-              opts = {
-                auto_submit_success = true,
-                auto_submit_errors = true,
-              },
-            },
-            slash_commands = {
-              file = {
-                callback = "strategies.chat.slash_commands.file",
-                description = "Insert a file",
-                opts = {
-                  contains_code = true,
-                  max_lines = 100000,
-                  provider = "fzf_lua" -- default|telescope|mini_pick|fzf_lua|snacks
-                },
-              }
-              ---
-            },
-          },
-        },
-
-        adapters = {
-          gemini = function()
-            return require("codecompanion.adapters").extend("gemini", {
-              env = {
-                api_key = "cmd: secret-tool lookup service api domain aistudio.google.com"
-              }
-            })
-          end,
-          copilot = function()
-            return require("codecompanion.adapters").extend("copilot", {
-              schema = {
-                model = {
-                  default = "claude-3.7-sonnet",
-                },
-                max_tokens = {
-                  default = 64000,
-                }
-              }
-            })
-          end,
-        }
-      })
-    end
-  },
-
-  {
-    "ravitemer/mcphub.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
-
-    },
-    -- cmd = "MCPHub", -- lazily start the hub when `MCPHub` is called
-    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
-    config = function()
-      require("mcphub").setup({
-        config = vim.fn.expand(vim.fn.stdpath("config") .. "/mcpservers.json"), -- Absolute path to config filejava.
-      })
-    end
-  },
+  -- {
+  --   "ravitemer/mcphub.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+  --
+  --   },
+  --   -- cmd = "MCPHub", -- lazily start the hub when `MCPHub` is called
+  --   build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+  --   config = function()
+  --     require("mcphub").setup({
+  --       config = vim.fn.expand(vim.fn.stdpath("config") .. "/mcpservers.json"), -- Absolute path to config filejava.
+  --     })
+  --   end
+  -- },
 
   "lambdalisue/suda.vim",
 

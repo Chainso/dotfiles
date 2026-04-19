@@ -1,14 +1,8 @@
 return {
   {
     "williamboman/mason.nvim",
-    version = "^1.0.0",
     config = function()
-      require("mason").setup({
-        registries = {
-          'github:nvim-java/mason-registry',
-          'github:mason-org/mason-registry',
-        },
-      })
+      require("mason").setup({})
     end
   },
 
@@ -36,6 +30,7 @@ return {
       require('java').setup({
         auto_install = false,
       })
+      vim.lsp.enable('jdtls')
 
       local overseer = require("overseer")
 
@@ -67,7 +62,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "nvim-java/nvim-java",
       "folke/neoconf.nvim",
       "rcarriga/nvim-notify"
     }
@@ -151,9 +145,8 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
-    version = "^1.0.0",
     dependencies = {
-      { "williamboman/mason.nvim", version = "^1.0.0" },
+      { "williamboman/mason.nvim" },
       "neovim/nvim-lspconfig",
       "folke/neoconf.nvim",
     },
@@ -162,11 +155,13 @@ return {
         -- override any of the default settings here
       })
 
-      local lspconfig = require("lspconfig")
-      local blink = require("blink.cmp")
-
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
+        automatic_enable = {
+          exclude = {
+            "rust_analyzer",
+          }
+        },
         ensure_installed = {
           "jsonls",
           "yamlls",
@@ -174,44 +169,29 @@ return {
           "marksman",
           "vimls"
         },
-        handlers = {
-          function(server_name)
-            lspconfig[server_name].setup({
-              capabilities = blink.get_lsp_capabilities(capabilities),
-            })
-          end,
-          jsonls = function()
-            lspconfig.jsonls.setup {
-              capabilities = blink.get_lsp_capabilities(capabilities),
-              settings = {
-                json = {
-                  schemas = require('schemastore').json.schemas(),
-                  validate = { enable = true },
-                },
-              },
-            }
-          end,
-          yamlls = function()
-            lspconfig.yamlls.setup {
-              capabilities = blink.get_lsp_capabilities(capabilities),
-              settings = {
-                yaml = {
-                  schemaStore = {
-                    -- You must disable built-in schemaStore support if you want to use
-                    -- this plugin and its advanced options like `ignore`.
-                    enable = false,
-                    -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-                    url = "",
-                  },
-                  schemas = require('schemastore').yaml.schemas(),
-                },
-              },
-            }
-          end,
-          rust_analyzer = function()
-          end
+      })
+
+      vim.lsp.config("jsonls", {
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
+
+      vim.lsp.config("yamlls", {
+        settings = {
+          yaml = {
+            schemaStore = {
+              enable = false,
+              url = "",
+            },
+            schemas = require("schemastore").yaml.schemas(),
+          },
         }
       })
+
     end
   },
 
